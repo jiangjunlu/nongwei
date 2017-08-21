@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	<script>
+		function gettable()
+		{
+		    
+		    var xmlhttp1;
+		    if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+		        xmlhttp1 = new XMLHttpRequest();
+
+		    } else { // code for IE6, IE5
+		        xmlhttp1 = new ActiveXObject("Microsoft.XMLHTTP");
+		    }
+		    xmlhttp1.open("get", "../../Sever/all/selecttab.aspx?time=" + Date.now.toString(), true);
+		    xmlhttp1.send(null);
+		    xmlhttp1.onreadystatechange = function () {
+		        if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {//检查服务是否有返回
+		            js = JSON.parse(xmlhttp1.responseText);//获取返回内容并把其转换为JSON格式
+		            var body = js.body;
+		            var j = 0;
+		            var t = document.createElement('table');
+		            var r = t.insertRow();
+		            var c0=r.insertCell();
+		            c0.innerHTML = '地区';
+		            var c1=r.insertCell();
+		            c1.innerHTML = '品种';
+		            var c2=r.insertCell();
+		            c2.innerHTML = '单位';
+		            var c3=r.insertCell();
+		            c3.innerHTML = '坐家出售价';
+		            var c4=r.insertCell();
+		            c4.innerHTML = '点上出售价';
+		            var c5=r.insertCell();
+		            c5.innerHTML = '同比';
+		            var c6=r.insertCell();
+		            c6.innerHTML = '环比';
+		            var c7=r.insertCell();
+		            c7.innerHTML = '波动情况';
+		            for (var i = 1; i <= body.length; i++) {
+		                var r0 = t.insertRow();
+		                var a0 = r0.insertCell();
+		                a0.innerHTML = unescape(body[i - 1].ADDRESS);
+		                var a1 =r0.insertCell();
+		                a1.innerHTML=unescape(body[i - 1].PINZHONG);
+		                var a2 =r0.insertCell();
+		                a2.innerHTML = '元/斤';
+		                var a3 =r0.insertCell();
+		                a3.innerHTML=unescape(body[i - 1].ZUOJIA_SHOUJIA);
+		                var a4 =r0.insertCell();
+		                a4.innerHTML=unescape(body[i - 1].DIANSHANG_SHOUJIA);
+		                var a5 =r0.insertCell();
+		                a5.innerHTML=unescape(body[i - 1].TONGBI);
+		                var a6 =r0.insertCell();
+		                a6.innerHTML=unescape(body[i - 1].HUANBI);
+		                var a7 =r0.insertCell();
+		                a7.innerHTML=unescape(body[i - 1].BODONG_STATICS);
+		                }
+		            }
+		            document.getElementById('table1').appendChild(t);
+		            t.setAttribute('border', '0');
+		            t.setAttribute('id','tlist');
+		    }
+		}
+	</script>
+	
+	</head>
+	<body onload="gettable()">
+    	<marquee  scrollAmount=2 direction="up" onmouseover="stop()" onmouseout="start()">
+            <div id="table1" style="font-size:9px">
+
+                   </div>
+		<!--<table id="tlist" cellspacing="0px" style="font-size:10px"><tr>
+            <td style="padding-left:5px">地区</td><td >品种</td><td>单位</td><td>坐家出售价</td><td>点上出售价</td><td>同比</td><td>环比</td><td>波动情况</td>
+        </tr><tr>
+            <td rowspan="3">长春</td><td>玉米</td><td>元/斤</td><td>1.03</td><td>1.02</td><td>8%</td><td>2%</td><td>良好</td>
+          </tr>
+        <tr>
+            <td>玉米</td><td>元/斤</td><td>1.05</td><td>1.03</td><td>8%</td><td>2%</td><td>良好</td>
+        </tr>
+        <tr>
+            <td>玉米</td><td>元/斤</td><td>1.02</td><td>1.01</td><td>11%</td><td>4%</td><td>良好</td>
+        </tr>
+
+        <tr>
+            <td rowspan="3">吉林</td><td>玉米</td><td>元/斤</td><td>1.03</td><td>1.06</td><td>8%</td><td>2%</td><td>良好</td>
+          </tr>
+        <tr>
+            <td>玉米</td><td>元/斤</td><td>1.05</td><td>1.01</td><td>8%</td><td>2%</td><td>良好</td>
+        </tr>
+        <tr>
+            <td>玉米</td><td>元/斤</td><td>1.02</td><td>1.22</td><td>11%</td><td>4%</td><td>良好</td>
+        </tr>
+
+        <tr>
+            <td rowspan="3">松原</td><td>玉米</td><td>元/斤</td><td>1.03</td><td>1.06</td><td>8%</td><td>2%</td><td>良好</td>
+          </tr>
+        <tr>
+            <td>玉米</td><td>元/斤</td><td>1.05</td><td>1.03</td><td>8%</td><td>2%</td><td>良好</td>
+        </tr>
+        <tr>
+            <td>玉米</td><td>元/斤</td><td>1.02</td><td>1.04</td><td>11%</td><td>4%</td><td>良好</td>
+        </tr>
+
+        <tr>
+            <td rowspan="3">四平</td><td>玉米</td><td>元/斤</td><td>1.03</td><td>1.06</td><td>8%</td><td>2%</td><td>良好</td>
+          </tr>
+        <tr>
+            <td>玉米</td><td>元/斤</td><td>1.05</td><td>1.05</td><td>8%</td><td>12%</td><td>良好</td>
+        </tr>
+        <tr>
+            <td>玉米</td><td>元/斤</td><td>1.02</td><td>1.06</td><td>11%</td><td>4%</td><td>良好</td>
+        </tr>
+
+        <tr>
+            <td rowspan="3">白城</td><td>玉米</td><td>元/斤</td><td>1.03</td><td>1.06</td><td>8%</td><td>2%</td><td>良好</td>
+          </tr>
+        <tr>
+            <td>玉米</td><td>元/斤</td><td>1.05</td><td>1.04</td><td>9%</td><td>2%</td><td>一般</td>
+        </tr>
+        <tr>
+            <td>玉米</td><td>元/斤</td><td>1.02</td><td>1.01</td><td>14%</td><td>4%</td><td>良好</td>
+        </tr>
+        </table>-->
+        </marquee>
+	</body>
+</html>

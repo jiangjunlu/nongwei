@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="selectjiagezoushi.aspx.cs" Inherits="NWweb.Sever.nongchanpin.selectjiagezoushi" %>

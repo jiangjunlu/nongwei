@@ -1,0 +1,16 @@
+F:\Microsoft Visual Studio 12.0\MyProject\NWweb\NWweb\obj\Debug\Fakes\oda\b\Oracle.DataAccess.2.112.1.0.Fakes.xml
+F:\Microsoft Visual Studio 12.0\MyProject\NWweb\NWweb\obj\Debug\Fakes\oda\b\Oracle.DataAccess.2.112.1.0.Fakes.dll
+F:\Microsoft Visual Studio 12.0\MyProject\NWweb\NWweb\obj\Debug\Fakes\oda\b\Oracle.DataAccess.2.112.1.0.Fakes.pdb
+F:\Microsoft Visual Studio 12.0\MyProject\NWweb\NWweb\obj\Debug\Fakes\oda\b\Microsoft.QualityTools.Testing.Fakes.dll
+F:\Microsoft Visual Studio 12.0\MyProject\NWweb\NWweb\obj\Debug\Fakes\oda\b\Oracle.DataAccess.dll
+F:\Microsoft Visual Studio 12.0\MyProject\NWweb\NWweb\obj\Debug\Fakes\oda\o\f.csprojResolveAssemblyReference.cache
+F:\Microsoft Visual Studio 12.0\MyProject\NWweb\NWweb\obj\Debug\Fakes\oda\o\Oracle.DataAccess.2.112.1.0.Fakes.dll
+F:\Microsoft Visual Studio 12.0\MyProject\NWweb\NWweb\obj\Debug\Fakes\oda\o\Oracle.DataAccess.2.112.1.0.Fakes.pdb
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\Debug\Fakes\oda\b\Oracle.DataAccess.2.112.1.0.Fakes.xml
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\Debug\Fakes\oda\b\Oracle.DataAccess.2.112.1.0.Fakes.dll
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\Debug\Fakes\oda\b\Oracle.DataAccess.2.112.1.0.Fakes.pdb
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\Debug\Fakes\oda\b\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\Debug\Fakes\oda\b\Oracle.DataAccess.dll
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\Debug\Fakes\oda\o\f.csprojResolveAssemblyReference.cache
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\Debug\Fakes\oda\o\Oracle.DataAccess.2.112.1.0.Fakes.dll
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\Debug\Fakes\oda\o\Oracle.DataAccess.2.112.1.0.Fakes.pdb

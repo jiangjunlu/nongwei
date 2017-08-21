@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="Scripts/jquery-1.7.1.min.js"></script>
+    <script>
+        function sc() {
+            var f0 = document.getElementById("FileUpload0");
+            var f1 = document.getElementById("FileUpload1");
+            var f2 = document.getElementById("FileUpload2");
+            var f3 = document.getElementById("FileUpload3");
+
+            var form = new FormData();
+            if (f0.files[0] != null)
+                form.append("lb0", f0.files[0]);
+            if (f1.files[0] != null)
+                form.append("lb1", f1.files[0]);
+            if (f2.files[0] != null)
+                form.append("lb2", f2.files[0]);
+            if (f3.files[0] != null)
+                form.append("lb3", f3.files[0]);
+                var xmlhttp;
+                if (window.XMLHttpRequest) {
+                    xmlhttp = new XMLHttpRequest();
+                }
+                else {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                xmlhttp.onreadystatechange=function()
+                {
+
+                    if(xmlhttp.status==200&&xmlhttp.readyState==4)
+                    {
+                        alert("上传成功");
+                    }
+                }
+                xmlhttp.open("post", "webimg.aspx", true);
+                xmlhttp.send(form);
+
+        }
+            function EquFileUpload_OnChange(md) {
+                if (md.id == "FileUpload0" && md.value != "") {
+                    document.getElementById("Image0").src = window.URL.createObjectURL(md.files[0]);
+                }
+                if (md.id == "FileUpload1" && md.value != "") {
+                    document.getElementById("Image1").src = window.URL.createObjectURL(md.files[0]);
+                }
+                if (md.id == "FileUpload2" && md.value != "") {
+                    document.getElementById("Image2").src = window.URL.createObjectURL(md.files[0]);
+                }
+                if (md.id == "FileUpload3" && md.value != "") {
+                    document.getElementById("Image3").src = window.URL.createObjectURL(md.files[0]);
+                }
+            }
+    </script>
+    <link href="css/templatemo-style.css" rel="stylesheet">
+    <link href="css/mode.css" rel="stylesheet" />
+</head>
+<body style="text-align:center">
+    <table style="width:100%;position:relative;top:+3cm">
+        <tr style="text-align:center">
+            <td style="width:25%">
+                <img id="Image0" src="WebImages/lb0.png" style="width: 240px; height: 170px" />
+            </td>
+            <td style="width:25%">
+                <img id="Image1" src="WebImages/lb1.png" style="width: 240px; height: 170px; " />
+            </td>
+            <td style="width:25%">
+                <img id="Image2" src="WebImages/lb2.png" style="width: 240px; height: 170px; " />
+            </td>
+            <td style ="width:25%">
+                <img id="Image3" src="WebImages/lb3.png" style="width: 240px; height: 170px; " />
+            </td>
+        </tr>
+
+        <tr style="text-align:center;position:relative;top:20px">
+
+            <td>
+                <input type="file" id="FileUpload0" onchange="EquFileUpload_OnChange(this)" accept=".png,.jpg" />
+            </td>
+            <td>
+                <input type="file" id="FileUpload1" onchange="EquFileUpload_OnChange(this)" accept=".png,.jpg" />
+            </td>
+            <td>
+                <input type="file" id="FileUpload2" onchange="EquFileUpload_OnChange(this)" accept=".png,.jpg" />
+            </td>
+            <td>
+                <input type="file" id="FileUpload3" onchange="EquFileUpload_OnChange(this)" accept=".png,.jpg" />
+            </td>
+        </tr>
+
+    </table>
+    <br /><br />
+    <button style="float: right; position: relative; right: 2.2cm; top: +3cm" class="templatemo-blue-button" onclick="sc()">上传</button>
+</body>
+</html>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="210.47.1.242" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^F:\\Microsoft\ Visual\ Studio\ 12\.0\\MyProject\\NWweb\\NWweb\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^F:\\Microsoft\ Visual\ Studio\ 12\.0\\MyProject\\NWweb\\NWweb\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+</parameters>

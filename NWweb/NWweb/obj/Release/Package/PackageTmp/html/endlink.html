@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>吉林省农产品市场监测预警平台</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="/css/HituxCMSBigRed/inner.css" rel="stylesheet" type="text/css" />
+<link href="/css/HituxCMSBigRed/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/functions.js"></script>
+<script type="text/javascript" src="/images/iepng/iepngfix_tilebg.js"></script>
+<script type="text/javascript" src="/js/mycookie.js"></script>
+<script type="text/javascript">
+window.onerror=function(){return true;}
+</script>
+    <script>
+        function getmessage() {
+            var reali= window.location.search;
+            var strarr = reali.split('title=');
+            var str = strarr[1].split(";");
+            if(str[1]=="FENXI")
+            {
+                endlink.innerHTML = "首页>分析预警";
+            }
+            if (str[1] == "JIANCE") {
+                endlink.innerHTML = "首页>监测报告";
+            }
+            if (str[1] == "liangshi") {
+                endlink.innerHTML = "首页>粮食专栏";
+            }
+            if (str[1] == "nongzi") {
+                endlink.innerHTML = "首页>农资专栏";
+            }
+            if (str[1] == "shucai") {
+                endlink.innerHTML = "首页>蔬菜专栏";
+            }
+            if (str[1] == "ZHUANJIA") {
+                endlink.innerHTML = "首页>专家观点";
+            }
+            if (str[1] == "ZIXUN") {
+                endlink.innerHTML = "首页>综合资讯";
+            }
+            if (str[1] == "zixun") {
+                endlink.innerHTML = "首页>综合资讯";
+            }
+            var xmlhttp;
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.open("get", "../../Sever/"+str[1]+"/selectmessage.aspx?time=" + Date.now.toString() + "&title=" + str[0], true);
+            xmlhttp.send(null);
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {//检查服务是否有返回
+                    js = JSON.parse(xmlhttp.responseText);//获取返回内容并把其转换为JSON格式
+                    var body = js.body;
+                    var j = 0;
+                    var message = document.getElementById("mess");
+                    message.innerHTML = unescape(body[0].NEIRONG);
+                }
+            }
+        }
+    </script>
+</head>
+
+<body onload="getmessage()" >
+<div id="wrapper">
+
+<!--head start-->
+<div id="head">
+
+<!--top start -->
+<div class="top">
+<div class="clearfix"></div>
+<div class="TopLogo">
+<div class="logo"><a href="/"><img src="/images/up_images/logo.png" alt="海纳企业网站管理系统 HituxCMS English 0020"></a></div>
+<!--<div class="tel">
+<p class="telW">24小时客服热线</p>
+<p class="telN">400-800-888</p>
+</div-->
+</div>
+
+</div>
+<!--top end-->
+
+<!--nav start-->
+<div id="NavLink">
+<div class="NavBG">
+<!--Head Menu Start-->
+<ul id='sddm'>
+    <li class='CurrentLi'><a href='/'>网站首页</a></li>
+                <li><a href='/About/' onmouseover="mopen('m2')" onmouseout='mclosetime()'>综合资讯</a></li>
+             <li><a href='/about1/' onmouseover="mopen('m2')" onmouseout='mclosetime()'>粮食专栏</a>
+                 <!--<div id='m2' onmouseover='mcancelclosetime()' onmouseout='mclosetime()'>
+                         <a href='/about1'>玉米</a> 
+                         <a href='/about1'>水稻</a> 
+                         <a href='/about1'>大豆</a> 
+                         <a href='/about1'>其他</a>  
+                     </div>-->
+             </li>
+            <li><a href='/Honor/' onmouseover="mopen('m3')" onmouseout='mclosetime()'>蔬菜专栏</a>
+                <!--<div id='m3' onmouseover='mcancelclosetime()' onmouseout='mclosetime()'>
+                         <a href='/about1'>玉米</a> 
+                         <a href='/about1'>水稻</a> 
+                         <a href='/about1'>大豆</a> 
+                         <a href='/about1'>其他</a>  
+                     </div>-->
+            </li> 
+            <li><a href='/Product/' onmouseover="mopen('m4')" onmouseout='mclosetime()'>农资专栏</a>
+                <!--<div id='m4' onmouseover='mcancelclosetime()' onmouseout='mclosetime()'>
+                         <a href='/about1'>玉米</a> 
+                         <a href='/about1'>水稻</a> 
+                         <a href='/about1'>大豆</a> 
+                         <a href='/about1'>其他</a>  
+                     </div>-->
+            </li>
+             <li><a href='/news/' onmouseover="mopen('m5')" onmouseout='mclosetime()'>专家观点</a></li> 
+            <li><a href='/Case/' onmouseover="mopen('m6')" onmouseout='mclosetime()'>数据管理</a> </li>
+             <li><a href='/Recruit' onmouseover="mopen('m7')" onmouseout='mclosetime()'>分析预警</a></li>
+             <li><a href='/Monitor' onmouseover="mopen('m8')" onmouseout='mclosetime()'>监测报告</a></li>
+</ul>
+<!--Head Menu End-->
+</div>
+<div class="clearfix"></div>
+</div>
+<!--nav end-->
+
+</div>
+<!--head end-->
+<!--body start-->
+<div id="body">
+<!--focus start-->
+<div id="InnerBanner">
+<script src='/ADs/112.js' type='text/javascript'></script>
+</div>
+<!--foncus end-->
+<div class="HeightTab clearfix"></div>
+<!--inner start -->
+<div class="inner">
+<!--left start--><!--left end-->
+<!--right start-->
+<div class="right">
+<div class="Position"><span>你的位置：<a href="#" id="endlink">   </a></span></div>
+<div class="HeightTab clearfix"></div>
+<!--main start-->
+<div class="main">
+
+<!--content start-->
+<div class="content">
+<div class="maincontent clearfix">
+<div class='DivLi'>
+<p id="mess"></p>
+</div>
+</div>
+
+
+</div>
+<!--content end-->
+
+</div>
+<!--main end-->
+</div>
+<!--right end-->
+</div>
+<!--inner end-->
+</div>
+<!--body end-->
+<div class="HeightTab clearfix"></div>
+<!--footer start-->
+<div id="footer">
+<div class="inner">
+<div class='BottomNav'><a href="/">网站首页</a><br />
+吉林省农村经济信息中心 联系电话：0431-85386281 电子邮件：admin@jl.gov.cn
+
+</div>
+<!--<p>Built By <a href="http://www.hitux.com/" target="_blank">HituxCMS V2.1</a> <a href="http://www.hitux.com/" target="_blank">海纳网络</a> 技术支持 <a href="/rss" target="_blank"><img src="/images/rss_icon.gif"></a> <a href="/rss/feed.xml" target="_blank"><img src="/images/xml_icon.gif"></a></p>-->
+</div>
+</div>
+<!--footer end -->
+
+
+</div>
+<script type="text/javascript" src="/js/ServiceCenter.js"></script>
+
+</body>
+</html>
+<!--
+Powered By HituxCMS ASP V2.1 
+-->

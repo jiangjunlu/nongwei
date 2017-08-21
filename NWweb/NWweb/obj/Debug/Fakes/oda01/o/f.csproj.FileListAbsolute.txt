@@ -1,0 +1,8 @@
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\Debug\Fakes\oda01\b\Oracle.DataAccess.Fakes.xml
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\Debug\Fakes\oda01\b\Oracle.DataAccess.Fakes.dll
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\Debug\Fakes\oda01\b\Oracle.DataAccess.Fakes.pdb
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\Debug\Fakes\oda01\b\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\Debug\Fakes\oda01\b\Oracle.DataAccess.dll
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\Debug\Fakes\oda01\o\f.csprojResolveAssemblyReference.cache
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\Debug\Fakes\oda01\o\Oracle.DataAccess.Fakes.dll
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\Debug\Fakes\oda01\o\Oracle.DataAccess.Fakes.pdb

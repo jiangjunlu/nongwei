@@ -1,0 +1,15 @@
+C:\Users\high\Desktop\NWadmin\NWadmin\NWadmin\bin\NWadmin.dll.config
+C:\Users\high\Desktop\NWadmin\NWadmin\NWadmin\bin\NWadmin.dll
+C:\Users\high\Desktop\NWadmin\NWadmin\NWadmin\bin\NWadmin.pdb
+C:\Users\high\Desktop\NWadmin\NWadmin\NWadmin\obj\x86\Debug\NWadmin.csprojResolveAssemblyReference.cache
+C:\Users\high\Desktop\NWadmin\NWadmin\NWadmin\obj\x86\Debug\NWadmin.dll
+C:\Users\high\Desktop\NWadmin\NWadmin\NWadmin\obj\x86\Debug\NWadmin.pdb
+C:\Users\Elian\Desktop\NWadmin\NWadmin\NWadmin\bin\NWadmin.dll.config
+C:\Users\Elian\Desktop\NWadmin\NWadmin\NWadmin\bin\NWadmin.dll
+C:\Users\Elian\Desktop\NWadmin\NWadmin\NWadmin\bin\NWadmin.pdb
+C:\Users\Elian\Desktop\NWadmin\NWadmin\NWadmin\obj\x86\Debug\NWadmin.csprojResolveAssemblyReference.cache
+C:\Users\Elian\Desktop\NWadmin\NWadmin\NWadmin\obj\x86\Debug\NWadmin.dll
+C:\Users\Elian\Desktop\NWadmin\NWadmin\NWadmin\obj\x86\Debug\NWadmin.pdb
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWadmin\NWadmin\obj\x86\Debug\NWadmin.csprojResolveAssemblyReference.cache
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWadmin\NWadmin\obj\x86\Debug\NWadmin.dll
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWadmin\NWadmin\obj\x86\Debug\NWadmin.pdb

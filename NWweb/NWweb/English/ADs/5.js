@@ -1,0 +1,1 @@
+﻿document.write("<a href='http://hitux.taobao.com/' target='_blank' title='HituxCMS English V2.1'><img src='/images/up_images/banner.jpg'  width='980' height='200' ></a>")

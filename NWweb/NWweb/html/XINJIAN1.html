@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>吉林省农产品市场监测预警平台</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="/css/HituxCMSBigRed/inner.css" rel="stylesheet" type="text/css" />
+<link href="/css/HituxCMSBigRed/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/functions.js"></script>
+<script type="text/javascript" src="/images/iepng/iepngfix_tilebg.js"></script>
+<script type="text/javascript" src="/js/mycookie.js"></script>
+<script type="text/javascript">
+    window.onerror = function () { return true; }
+</script>
+    <script>
+        function getmessage() {
+            var reali = window.location.search;
+            var strarr = reali.split('title=');
+            var xmlhttp;
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.open("get", "../../Sever/GONGQIU/selectmessage.aspx?time=" + Date.now.toString() + "&title=" + strarr[1], true);
+            xmlhttp.send(null);
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {//检查服务是否有返回  
+                    js = JSON.parse(xmlhttp.responseText);//获取返回内容并把其转换为JSON格式    
+                    var body = js.body; 
+                    var message1 = document.getElementById("title");
+                    var message2 = document.getElementById("time");
+                    var message3 = document.getElementById("contact");
+                    var message4 = document.getElementById("usetime");
+                    var message5 = document.getElementById("number");
+                    var message6 = document.getElementById("state");
+                    var message7 = document.getElementById("label4");
+                    message1.innerHTML = unescape(body[0].GONGQIU_XINXI_SHANGPIN);
+                    message2.innerHTML = unescape(body[0].TIME);
+                    message3.innerHTML = unescape(body[0].GONGQIU_XINXI_RENYUAN_XINGMING);
+                    message4.innerHTML = unescape(body[0].GONGQIU_XINXI_YOUXIAOQI);
+                    message5.innerHTML = unescape(body[0].GONGQIU_XINXI_RENYUAN_DIANHUA);
+                    message6.innerHTML = unescape(body[0].STATE);
+                    message7.innerHTML = unescape(body[0].GONGQIU_XINXI_MIAOSHU);
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        .auto-style3
+        {
+            width: 200px;
+        }
+        #tabl tr, td
+        {
+            border:1px solid #ccc;
+            width:200px;
+        }
+        .auto-style3
+        {
+            background-color:#EAF2D3;
+            text-align:center;
+            padding :2px 7px 3px 17px;
+            font-weight:800;
+        }
+    </style>
+</head>
+
+<body onload="getmessage()" >
+<div id="wrapper">
+<!--head start-->
+<div id="head">
+
+<!--top start -->
+<div class="top">
+<div class="clearfix"></div>
+<div class="TopLogo">
+<div class="logo"><a href="/"><img src="/images/up_images/logo.png" alt="海纳企业网站管理系统 HituxCMS English 0020"></a></div>
+<!--<div class="tel">
+<p class="telW">24小时客服热线</p>
+<p class="telN">400-800-888</p>
+</div-->
+</div>
+
+</div>
+<!--top end-->
+
+<!--nav start-->
+<div id="NavLink">
+<div class="NavBG">
+<!--Head Menu Start-->
+<ul id='sddm'>
+    <li class='CurrentLi'><a href='/'>网站首页</a></li>
+                <li><a href='/About/' onmouseover="mopen('m2')" onmouseout='mclosetime()'>综合资讯</a></li>
+             <li><a href='/about1/' onmouseover="mopen('m2')" onmouseout='mclosetime()'>粮食专栏</a>
+                 <!--<div id='m2' onmouseover='mcancelclosetime()' onmouseout='mclosetime()'>
+                         <a href='/about1'>玉米</a> 
+                         <a href='/about1'>水稻</a> 
+                         <a href='/about1'>大豆</a> 
+                         <a href='/about1'>其他</a>  
+                     </div>-->
+             </li>
+            <li><a href='/Honor/' onmouseover="mopen('m3')" onmouseout='mclosetime()'>蔬菜专栏</a>
+                <!--<div id='m3' onmouseover='mcancelclosetime()' onmouseout='mclosetime()'>
+                         <a href='/about1'>玉米</a> 
+                         <a href='/about1'>水稻</a> 
+                         <a href='/about1'>大豆</a> 
+                         <a href='/about1'>其他</a>  
+                     </div>-->
+            </li> 
+            <li><a href='/Product/' onmouseover="mopen('m4')" onmouseout='mclosetime()'>农资专栏</a>
+                <!--<div id='m4' onmouseover='mcancelclosetime()' onmouseout='mclosetime()'>
+                         <a href='/about1'>玉米</a> 
+                         <a href='/about1'>水稻</a> 
+                         <a href='/about1'>大豆</a> 
+                         <a href='/about1'>其他</a>  
+                     </div>-->
+            </li>
+             <li><a href='/news/' onmouseover="mopen('m5')" onmouseout='mclosetime()'>专家观点</a></li> 
+            <li><a href='/Case/' onmouseover="mopen('m6')" onmouseout='mclosetime()'>数据管理</a> </li>
+             <li><a href='/Recruit' onmouseover="mopen('m7')" onmouseout='mclosetime()'>分析预警</a></li>
+             <li><a href='/Monitor' onmouseover="mopen('m8')" onmouseout='mclosetime()'>监测报告</a></li>
+</ul>
+<!--Head Menu End-->
+</div>
+<div class="clearfix"></div>
+</div>
+<!--nav end-->
+
+</div>
+<!--head end-->
+<!--body start-->
+<div id="body">
+<!--focus start-->
+<div id="InnerBanner">
+<script src='/ADs/112.js' type='text/javascript'></script>
+</div>
+<!--foncus end-->
+<div class="HeightTab clearfix"></div>
+<!--inner start -->
+<div class="inner">
+<!--left start--><!--left end-->
+<!--right start-->
+<div class="right">
+<div class="Position"><span>你的位置：<a href="/">首页</a> > <a href='#'>供求专区</a></span></div>
+<div class="HeightTab clearfix"></div>
+<!--main start-->
+<div class="main">
+
+<!--content start-->
+<div class="content">
+<div class="maincontent clearfix">
+<div class='DivLi'>
+   <div  style="margin-left:20px;font-size:14px">
+      <table style="width:800px; border-collapse:collapse;" id="tabl">
+         <tr ><td class="auto-style3" >名&nbsp;&nbsp;&nbsp;称:</td>
+              <td class="auto-style4"id="title"></td>
+              <td class="auto-style3" >日&nbsp;&nbsp;&nbsp;期:</td>
+              <td class="auto-style4"id="time"></td>
+          </tr>
+          <tr><td class="auto-style3" >联系人:</td>
+              <td class="auto-style4" id="contact"></td>
+              <td class="auto-style3" >有效期:</td>
+              <td class="auto-style4" id="usetime"></td>
+          </tr>
+          <tr><td class="auto-style3" >电&nbsp;&nbsp;&nbsp;话:</td>
+              <td class="auto-style4" id="number"></td>
+              <td class="auto-style3">状&nbsp;&nbsp;&nbsp;态:</td>
+              <td class="auto-style4"  id="state"></td>
+          </tr>
+      </table>
+       <br />
+      <span style="font-weight:800"> 信息描述：</span>
+       <br/>
+       <br/>
+       <label id="label4" style="width:auto;display:block; ">   </label>
+   </div>
+</div>
+</div>
+
+
+</div>
+<!--content end-->
+
+</div>
+<!--main end-->
+</div>
+<!--right end-->
+</div>
+<!--inner end-->
+</div>
+<!--body end-->
+<div class="HeightTab clearfix"></div>
+<!--footer start-->
+<div id="footer">
+<div class="inner">
+<div class='BottomNav'><a href="/">网站首页</a><br />
+吉林省农村经济信息中心 联系电话：0431-85386281 电子邮件：admin@jl.gov.cn
+
+</div>
+<!--<p>Built By <a href="http://www.hitux.com/" target="_blank">HituxCMS V2.1</a> <a href="http://www.hitux.com/" target="_blank">海纳网络</a> 技术支持 <a href="/rss" target="_blank"><img src="/images/rss_icon.gif"></a> <a href="/rss/feed.xml" target="_blank"><img src="/images/xml_icon.gif"></a></p>-->
+</div>
+</div>
+<!--footer end -->
+
+
+</div>
+<script type="text/javascript" src="/js/ServiceCenter.js"></script>
+
+</body>
+</html>
+<!--
+Powered By HituxCMS ASP V2.1 
+-->

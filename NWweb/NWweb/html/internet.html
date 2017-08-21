@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>吉林省农产品市场监测预警平台</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="/css/HituxCMSBigRed/inner.css" rel="stylesheet" type="text/css" />
+<link href="/css/HituxCMSBigRed/common.css" rel="stylesheet" type="text/css" />
+<link href="../css/inter.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/functions.js"></script>
+<script type="text/javascript" src="/js/focusslide.js"></script>
+<script type="text/javascript" src="/images/iepng/iepngfix_tilebg.js"></script>
+<script type="text/javascript" src="js/jquery-1.7.1.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/Chart.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/Chart.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript" src="../js/Chart.js"></script>
+<script type="text/javascript">
+window.onerror=function(){return true;}
+</script>
+    <style type="text/css">
+        #TiJiao {
+    position:absolute;
+    bottom:0px;
+    right:16px;
+    width:100%;
+    height:30px;
+    text-align:center;
+    z-index:2;
+    overflow:hidden;
+    }
+    </style>
+    
+    <script type="text/javascript">
+        //调查问卷页面
+        var notnull=false;
+        var selected = new Array();
+        function getwenjuan() {
+            var xmlhttp;
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+
+            } else { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.open("get", "../../Sever/dcwj/selecemessage.aspx?time=" + Date.now.toString(), true);
+            xmlhttp.send(null);
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {//检查服务是否有返回
+                    js = JSON.parse(xmlhttp.responseText);//获取返回内容并把其转换为JSON格式
+                    var body = js.body;
+                    var bool = true;
+                    var j = 0;
+                    var message = document.getElementById("message");
+                    var divs = document.createElement("div");//动态创建
+                    var ul = document.createElement("ul");
+                    for (var col = 0; col < body.length;col++)
+                    { 
+                        while(bool){
+                            var span = document.createElement("span");
+                            var li = document.createElement("li");
+                            var a = document.createElement("a");
+                            span.innerHTML = unescape(body[col].DCWJ_TIMU);
+                            selected[j].value = unescape(body[col].DCWJ_TIMU);
+                            j++;
+                            li.appendChild(span);
+                            li.appendChild(a);
+                            ul.appendChild(li);
+                            divs.appendChild(ul);
+                            message.appendChild(divs);
+                            bool = false;                            
+                        }
+                        if(col<=body.length-2){
+                        if (body[col].DCWJ_TIMU == body[col + 1].DCWJ_TIMU) {
+                            //加入单选框
+                            var choice = document.createElement("input");
+                            choice.setAttribute("type", "radio");
+                            choice.setAttribute("name", unescape(body[col].DCWJ_TIMU));
+                            choice.setAttribute("value", unescape(body[col].DCWJXX_MIAOSHU));
+                            var li = document.createElement("li");
+                            li.appendChild(choice);
+                            li.appendChild(document.createTextNode(unescape(body[col].DCWJXX_MIAOSHU)));
+                            ul.appendChild(li);
+                            divs.appendChild(ul);
+                            message.appendChild(divs);
+                        }  
+                        else {
+                            var choice = document.createElement("input");
+                            choice.setAttribute("type", "radio");
+                            choice.setAttribute("name", unescape(body[col].DCWJ_TIMU));
+                            choice.setAttribute("value", unescape(body[col].DCWJXX_MIAOSHU));
+                            var li = document.createElement("li");
+                            li.appendChild(choice);
+                            li.appendChild(document.createTextNode(unescape(body[col].DCWJXX_MIAOSHU)));
+                            ul.appendChild(li);
+                            divs.appendChild(ul);
+                            message.appendChild(divs);
+                            bool =true;
+                        }
+                    }
+                       else if(col==body.length-1)
+                        {
+                         var choice = document.createElement("input");
+                         choice.setAttribute("type", "radio");
+                         choice.setAttribute("name", unescape(body[col].DCWJ_TIMU));
+                         choice.setAttribute("value", unescape(body[col].DCWJXX_MIAOSHU));
+                         var li = document.createElement("li");
+                         li.appendChild(choice);
+                         li.appendChild(document.createTextNode(unescape(body[col].DCWJXX_MIAOSHU)));
+                         ul.appendChild(li);
+                         divs.appendChild(ul);
+                         message.appendChild(divs);
+                         bool = true;
+                        } 
+                    }
+                }
+            }
+        }
+        function tijiao() {
+            for (var i = 0; i < selected.length; i++)
+            {
+                for (var k = 0; k < selected[i].length; k++)
+                {
+                    if (selected[i][k].checked==true)
+                    {
+                        notnull = true;
+                        var title = selected[i].value;
+                        var xuanxiang = selected[i][k].value;
+                        var FileController = "../../Sever/dcwj/updatecontent.aspx";                    // 接收上传文件的后台地址
+                        var form = new FormData();
+                        form.append("title", title);
+                        form.append("xuanxiang", xuanxiang);// 可以增加表单数据         
+                        // XMLHttpRequest 对象
+                        var xhr = new XMLHttpRequest();
+                        if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                            xhr = new XMLHttpRequest();
+                        }
+                        else { // code for IE6, IE5
+                            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                        }
+                        xhr.open("post", FileController, true);
+                        xhr.onload = function () {
+
+                        };
+                        xhr.send(form);
+                    }
+                }
+            }
+            if (notnull == true) {
+                alert("提交成功!");
+                location.replace(location.href);
+            }
+            else {
+                alert("请先选择选项，再进行提交！");
+            }
+        }
+    </script>
+    <style type="text/css" >
+    
+    </style>
+</head>
+
+<body onload="getwenjuan()">
+<div id="wrapper">
+
+<!--head start-->
+<div id="head">
+
+<!--top start -->
+<div class="top">
+<div class="clearfix"></div>
+<div class="TopLogo">
+<div class="logo"><a href="/"><img src="/images/up_images/logo.png"></a></div>
+</div>
+
+</div>
+<!--top end-->
+
+<!--nav start-->
+<div id="NavLink">
+<div class="NavBG">
+<!--Head Menu Start-->
+<ul id='sddm'>
+    <li class='CurrentLi'><a href='/'>网站首页</a></li>
+                <li><a href='/About/' onmouseover="mopen('m2')" onmouseout='mclosetime()'>综合资讯</a></li>
+                <li><a href='/about1/' onmouseover="mopen('m2')" onmouseout='mclosetime()'>粮食专栏</a></li>
+                <li><a href='/Honor/' onmouseover="mopen('m3')" onmouseout='mclosetime()'>蔬菜专栏</a></li> 
+                <li><a href='/Product/' onmouseover="mopen('m4')" onmouseout='mclosetime()'>农资专栏</a></li>
+                <li><a href='/news/' onmouseover="mopen('m5')" onmouseout='mclosetime()'>专家观点</a></li> 
+                <li><a href='/Case/' onmouseover="mopen('m6')" onmouseout='mclosetime()'>数据管理</a> </li>
+                <li><a href='/Recruit' onmouseover="mopen('m7')" onmouseout='mclosetime()'>分析预警</a></li>
+                <li><a href='/Monitor' onmouseover="mopen('m8')" onmouseout='mclosetime()'>监测报告</a></li>
+</ul>
+<!--Head Menu End-->
+</div>
+<div class="clearfix"></div>
+</div>
+<!--nav end-->
+
+</div>
+<!--head end-->
+<!--body start-->
+<div id="body">
+<!--focus start-->
+<div id="InnerBanner">
+<script src='/ADs/112.js' type='text/javascript'></script>
+</div>
+<!--foncus end-->
+<div class="HeightTab clearfix"></div>
+<!--inner start -->
+<div class="inner">
+<!--left start--><!--left end-->
+<!--right start-->
+<div class="right">
+<div class="Position"><span>你的位置：<a href="/">首页</a> > <a href='html/internet.html'>网上调查</a></span></div>
+<div class="HeightTab clearfix"></div>
+<!--main start-->
+<div class="main">
+
+<!--content start-->
+<div class="content">
+<div class="maincontent clearfix">
+<div class="right">
+   
+<div class="lef">
+        <div class="topic">
+            <div class="TopicTitle"><p style="color:#3E7433"><font face="仿宋" size="5px">调查问卷：</font></p>
+            </div>
+        </div>
+        <div style="margin-top:20px;" id="message">
+            <!--<span class="timu">1.您认为玉米后期的走势如何？</span><br/>
+            <div style="padding-top:5px;">
+            <span>&nbsp;&nbsp;<input class="one" name="choice4" type="radio" value="A" /> &nbsp;A、增长</span>
+            <span>&nbsp;&nbsp;<input class="one" name="choice4" type="radio" value="B" /> &nbsp;B、稳定</span>
+            <span>&nbsp;&nbsp;<input class="one" name="choice4" type="radio" value="C" /> &nbsp;C、减少</span>
+            <br/>
+             </div>
+            <span class="timu">2.您认为大豆后期的走势如何？</span><br/>
+            <div style="padding-top:5px;">
+                <span>&nbsp;&nbsp;<input class="two" name="choice5" type="radio" value="A" /> &nbsp;A、增长</span>
+                <span>&nbsp;&nbsp;<input class="two" name="choice5" type="radio" value="B" /> &nbsp;B、稳定</span>
+                <span>&nbsp;&nbsp;<input class="two" name="choice5" type="radio" value="C" /> &nbsp;C、减少</span>
+                <br />
+            </div>
+            <span class="timu">3.您认为水稻后期的走势如何？</span><br/>
+            <div style="padding-top:5px;">
+                <span>&nbsp;&nbsp;<input class="three" name="choice6" type="radio" value="A" /> &nbsp;A、增长</span>
+                <span>&nbsp;&nbsp;<input class="three" name="choice6" type="radio" value="B" /> &nbsp;B、稳定</span>
+                <span>&nbsp;&nbsp;<input class="three" name="choice6" type="radio" value="C" /> &nbsp;C、减少</span>
+                <br />
+            </div>
+            <span class="timu">1.您认为玉米后期的走势如何？</span><br />
+            <div style="padding-top:5px;">
+                <span>&nbsp;&nbsp;<input class="four" name="choice1" type="radio" value="A" /> &nbsp;A、增长</span>
+                <span>&nbsp;&nbsp;<input class="four" name="choice1" type="radio" value="B" /> &nbsp;B、稳定</span>
+                <span>&nbsp;&nbsp;<input class="four" name="choice1" type="radio" value="C" /> &nbsp;C、减少</span>
+                <br />
+            </div>
+            <span class="timu">2.您认为大豆后期的走势如何？</span><br />
+            <div style="padding-top:5px;">
+                <span>&nbsp;&nbsp;<input class="five" name="choice2" type="radio" value="A" /> &nbsp;A、增长</span>
+                <span>&nbsp;&nbsp;<input class="five" name="choice2" type="radio" value="B" /> &nbsp;B、稳定</span>
+                <span>&nbsp;&nbsp;<input class="five" name="choice2" type="radio" value="C" /> &nbsp;C、减少</span>
+                <br />
+            </div>
+            <span class="timu">3.您认为水稻后期的走势如何？</span><br />
+            <div style="padding-top:5px;">
+                <span>&nbsp;&nbsp;<input class="six" name="choice3" type="radio" value="A" /> &nbsp;A、增长</span>
+                <span>&nbsp;&nbsp;<input class="six" name="choice3" type="radio" value="B" /> &nbsp;B、稳定</span>
+                <span>&nbsp;&nbsp;<input class="six" name="choice3" type="radio" value="C" /> &nbsp;C、减少</span>
+                <br />
+            </div>-->
+    </div>
+    
+       
+    
+        </div>
+    
+        <!--<div class="righ">
+       <div class="topic">
+            <div class="TopicTitle"><p style="color:#3E7433"><font face="仿宋" size="5px">调查结果：</font></p></div>
+        </div>
+        <div style="margin-top:20px;width:150px;">
+            <canvas id="canvas" style="height: 100px;width: 140px;"></canvas>
+            
+        <script type="text/javascript">
+          var barChartData = {
+                labels: ["A", "B", "C"],
+                datasets: [
+                {
+                fillColor: "rgba(220,220,220,0.5)",
+                strokeColor: "rgba(220,220,220,1)",
+                data: [65, 59, 90]
+                }
+               ]
+          }
+          var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Bar(barChartData);
+      </script>
+
+        </div>
+        </div>-->
+    <div id="TiJiao" style="text-align:center;margin-bottom:5px;position:relative;">
+        <button onclick="tijiao()">提交问卷</button>
+    </div>
+    </div>
+
+</div>
+<!--content end-->
+
+</div>
+<!--main end-->
+</div>
+    <!--<div style="text-align:center">
+        <table style="margin:auto">
+            <tr>
+                <td>
+                    <a onclick="changepage(this.innerHTML)">上一页</a>
+                </td>
+                <td>
+                    &nbsp;
+                    <select id="pageindex">
+                        <option>1</option>
+                    </select>
+                    &nabla;
+                </td>
+                <td>
+                    <a style="target='_blank'" onclick="changepage(this.innerHTML)">下一页</a>
+                </td>
+            </tr>
+        </table>
+    </div>-->
+<!--right end-->
+</div>
+<!--inner end-->
+</div>
+<!--body end-->
+<div class="HeightTab clearfix"></div>
+<!--footer start-->
+<div id="footer">
+<div class="inner">
+<div class='BottomNav'><a href="/">网站首页</a><br />
+吉林省农村经济信息中心 联系电话：0431-85386281 电子邮件：admin@jl.gov.cn
+
+</div>
+</div>
+</div>
+<!--footer end -->
+
+
+</div>
+<script type="text/javascript" src="/js/ServiceCenter.js"></script>
+
+</body>
+</html>
+<!--
+Powered By HituxCMS ASP V2.1 
+-->
+

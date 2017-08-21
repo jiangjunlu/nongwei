@@ -1,0 +1,1388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CB5E3419-DB08-4BBB-B257-44B40A95FE00}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NWadmin</RootNamespace>
+    <AssemblyName>NWadmin</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.JScript" />
+    <Reference Include="Oracle.DataAccess">
+      <HintPath>..\..\..\..\Tencent Files\3042004295\FileRecv\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="chanpin\change.aspx" />
+    <Content Include="chanpin\chanpin.aspx" />
+    <Content Include="chanpin\deletechanpin.aspx" />
+    <Content Include="chanpin\insertchanpin.aspx" />
+    <Content Include="chanpin\searchchanpin.aspx" />
+    <Content Include="chanpin\selectforchangechanpin.aspx" />
+    <Content Include="dcwjxuanxiang.html" />
+    <Content Include="dcwjxuanxiang\change.aspx" />
+    <Content Include="dcwjxuanxiang\dcwjxuanxiang.aspx" />
+    <Content Include="dcwjxuanxiang\deletedcwjxuanxiang.aspx" />
+    <Content Include="dcwjxuanxiang\getitems.aspx" />
+    <Content Include="dcwjxuanxiang\insertdcwjxuanxiang.aspx" />
+    <Content Include="dcwjxuanxiang\look.aspx" />
+    <Content Include="dcwjxuanxiang\searchdcwjxuanxiang.aspx" />
+    <Content Include="dcwjxuanxiang\selectforchangedcwjxuanxiang.aspx" />
+    <Content Include="dcwjxuanxiang\selectforchangetitle.aspx" />
+    <Content Include="dcwj\change.aspx" />
+    <Content Include="dcwj\dcwj.aspx" />
+    <Content Include="dcwj\deletedcwj.aspx" />
+    <Content Include="dcwj\insertdcwj.aspx" />
+    <Content Include="dcwj\look.aspx" />
+    <Content Include="dcwj\searchdcwj.aspx" />
+    <Content Include="dcwj\selectforchangedcwj.aspx" />
+    <Content Include="dcwj\select_items.aspx" />
+    <Content Include="fenxiyujingxinxi.html" />
+    <Content Include="fenxi\change.aspx" />
+    <Content Include="fenxi\deletefenxi.aspx" />
+    <Content Include="fenxi\fenxi.aspx" />
+    <Content Include="fenxi\insertfenxi.aspx" />
+    <Content Include="fenxi\look.aspx" />
+    <Content Include="fenxi\searchfenxi.aspx" />
+    <Content Include="fenxi\selectforchangefenxi.aspx" />
+    <Content Include="gongqiuzhuanqu.html" />
+    <Content Include="gongqiu\change.aspx" />
+    <Content Include="gongqiu\delete.aspx" />
+    <Content Include="gongqiu\gongqiu.aspx" />
+    <Content Include="gongqiu\insertgongqiu.aspx" />
+    <Content Include="gongqiu\look.aspx" />
+    <Content Include="gongqiu\selectforchangegongqiu.aspx" />
+    <Content Include="images\头像.png" />
+    <Content Include="images\头部.png" />
+    <Content Include="images\密码.png" />
+    <Content Include="images\注册.png" />
+    <Content Include="images\版权.png" />
+    <Content Include="images\登录.png" />
+    <Content Include="images\背景.png" />
+    <Content Include="images\背景1.png" />
+    <Content Include="images\输入.png" />
+    <Content Include="images\输入框.png" />
+    <Content Include="jiagezhishu.html" />
+    <Content Include="jiage\change.aspx" />
+    <Content Include="jiage\deletejiage.aspx" />
+    <Content Include="jiage\insertjiage.aspx" />
+    <Content Include="jiage\jiage.aspx" />
+    <Content Include="jiage\look.aspx" />
+    <Content Include="jiage\searchjiage.aspx" />
+    <Content Include="jiage\selectforchangejiage.aspx" />
+    <Content Include="jiance.html" />
+    <Content Include="jiance\change.aspx" />
+    <Content Include="jiance\deletejiance.aspx" />
+    <Content Include="jiance\insertjiance.aspx" />
+    <Content Include="jiance\jiance.aspx" />
+    <Content Include="jiance\look.aspx" />
+    <Content Include="jiance\searchjiance.aspx" />
+    <Content Include="jiance\selectforchangejiance.aspx" />
+    <Content Include="liangshi.html" />
+    <Content Include="liangshi\change.aspx" />
+    <Content Include="liangshi\deleteliangshi.aspx" />
+    <Content Include="liangshi\insertliangshi.aspx" />
+    <Content Include="liangshi\liangshi.aspx" />
+    <Content Include="liangshi\look.aspx" />
+    <Content Include="liangshi\searchliangshi.aspx" />
+    <Content Include="liangshi\selectforchangeliangshi.aspx" />
+    <Content Include="My97DatePicker\calendar.js" />
+    <Content Include="My97DatePicker\config.js" />
+    <Content Include="My97DatePicker\lang\en.js" />
+    <Content Include="My97DatePicker\lang\zh-cn.js" />
+    <Content Include="My97DatePicker\lang\zh-tw.js" />
+    <Content Include="My97DatePicker\My97DatePicker.htm" />
+    <Content Include="My97DatePicker\skin\datePicker.gif" />
+    <Content Include="My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="My97DatePicker\skin\default\img.gif" />
+    <Content Include="My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="My97DatePicker\WdatePicker.js" />
+    <Content Include="My97DatePicker\开发包\lang\en.js" />
+    <Content Include="My97DatePicker\开发包\lang\zh-cn.js" />
+    <Content Include="My97DatePicker\开发包\lang\zh-tw.js" />
+    <Content Include="My97DatePicker\开发包\readme.txt" />
+    <Content Include="My97DatePicker\开发包\skin\datePicker.gif" />
+    <Content Include="My97DatePicker\开发包\skin\default\datepicker.css" />
+    <Content Include="My97DatePicker\开发包\skin\default\img.gif" />
+    <Content Include="My97DatePicker\开发包\skin\WdatePicker.css" />
+    <Content Include="My97DatePicker\开发包\skin\whyGreen\bg.jpg" />
+    <Content Include="My97DatePicker\开发包\skin\whyGreen\datepicker.css" />
+    <Content Include="My97DatePicker\开发包\skin\whyGreen\img.gif" />
+    <Content Include="nongchanpin.html" />
+    <Content Include="nongyeqixiang.html" />
+    <Content Include="nongzizhuanlan.html" />
+    <Content Include="nongzi\deletenongzi.aspx" />
+    <Content Include="nongzi\insertnongzi.aspx" />
+    <Content Include="nongzi\look.aspx" />
+    <Content Include="nongzi\searchnongzi.aspx" />
+    <Content Include="nongzi\selectforchangenongzi.aspx" />
+    <Content Include="nongzi\selectnz.aspx" />
+    <Content Include="nongzi\updatenz.aspx" />
+    <Content Include="qixiang\change.aspx" />
+    <Content Include="qixiang\deleteqixiang.aspx" />
+    <Content Include="qixiang\insertqixiang.aspx" />
+    <Content Include="qixiang\look.aspx" />
+    <Content Include="qixiang\qixiang.aspx" />
+    <Content Include="qixiang\searchqixiang.aspx" />
+    <Content Include="qixiang\selectforchangeqixiang.aspx" />
+    <Content Include="shichang.html" />
+    <Content Include="shichang\change.aspx" />
+    <Content Include="shichang\deleteshichang.aspx" />
+    <Content Include="shichang\insertshichang.aspx" />
+    <Content Include="shichang\look.aspx" />
+    <Content Include="shichang\searchshichang.aspx" />
+    <Content Include="shichang\selectforchangeshichang.aspx" />
+    <Content Include="shichang\shichang.aspx" />
+    <Content Include="shucaizhuanlan.html" />
+    <Content Include="shucai\change.aspx" />
+    <Content Include="shucai\deleteshucai.aspx" />
+    <Content Include="shucai\insertshucai.aspx" />
+    <Content Include="shucai\look.aspx" />
+    <Content Include="shucai\searchshucai.aspx" />
+    <Content Include="shucai\selectforchangeshucai.aspx" />
+    <Content Include="shucai\shucai.aspx" />
+    <Content Include="topimg.html" />
+    <Content Include="user.html" />
+    <Content Include="user\change.aspx" />
+    <Content Include="user\check.aspx" />
+    <Content Include="user\insertuser.aspx" />
+    <Content Include="user\look.aspx" />
+    <Content Include="user\searchuser.aspx" />
+    <Content Include="user\selectforchangeuser.aspx" />
+    <Content Include="user\user.aspx" />
+    <Content Include="webimg.aspx" />
+    <Content Include="zhuanjia.html" />
+    <Content Include="zhuanjia\change.aspx" />
+    <Content Include="zhuanjia\deletezhuanjia.aspx" />
+    <Content Include="zhuanjia\insertzhuanjia.aspx" />
+    <Content Include="zhuanjia\look.aspx" />
+    <Content Include="zhuanjia\searchzhuanjia.aspx" />
+    <Content Include="zhuanjia\selectforchangezhuanjia.aspx" />
+    <Content Include="zhuanjia\select_items.aspx" />
+    <Content Include="zhuanjia\zhuanjia.aspx" />
+    <Content Include="zhuce.aspx" />
+    <Content Include="zixun\change.aspx" />
+    <Content Include="zixun\deletezixun.aspx" />
+    <Content Include="zixun\insertzixun.aspx" />
+    <Content Include="zixun\look.aspx" />
+    <Content Include="zixun\searchzixun.aspx" />
+    <Content Include="zixun\selectforchangezixun.aspx" />
+    <Content Include="zixun\zixun.aspx" />
+    <Content Include="zonghezixun.html" />
+    <Content Include="ckeditor\adapters\jquery.js" />
+    <Content Include="ckeditor\build-config.js" />
+    <Content Include="ckeditor\ckeditor.js" />
+    <Content Include="ckeditor\config.js" />
+    <Content Include="ckeditor\contents.css" />
+    <Content Include="ckeditor\lang\af.js" />
+    <Content Include="ckeditor\lang\ar.js" />
+    <Content Include="ckeditor\lang\bg.js" />
+    <Content Include="ckeditor\lang\bn.js" />
+    <Content Include="ckeditor\lang\bs.js" />
+    <Content Include="ckeditor\lang\ca.js" />
+    <Content Include="ckeditor\lang\cs.js" />
+    <Content Include="ckeditor\lang\cy.js" />
+    <Content Include="ckeditor\lang\da.js" />
+    <Content Include="ckeditor\lang\de.js" />
+    <Content Include="ckeditor\lang\el.js" />
+    <Content Include="ckeditor\lang\en-au.js" />
+    <Content Include="ckeditor\lang\en-ca.js" />
+    <Content Include="ckeditor\lang\en-gb.js" />
+    <Content Include="ckeditor\lang\en.js" />
+    <Content Include="ckeditor\lang\eo.js" />
+    <Content Include="ckeditor\lang\es.js" />
+    <Content Include="ckeditor\lang\et.js" />
+    <Content Include="ckeditor\lang\eu.js" />
+    <Content Include="ckeditor\lang\fa.js" />
+    <Content Include="ckeditor\lang\fi.js" />
+    <Content Include="ckeditor\lang\fo.js" />
+    <Content Include="ckeditor\lang\fr-ca.js" />
+    <Content Include="ckeditor\lang\fr.js" />
+    <Content Include="ckeditor\lang\gl.js" />
+    <Content Include="ckeditor\lang\gu.js" />
+    <Content Include="ckeditor\lang\he.js" />
+    <Content Include="ckeditor\lang\hi.js" />
+    <Content Include="ckeditor\lang\hr.js" />
+    <Content Include="ckeditor\lang\hu.js" />
+    <Content Include="ckeditor\lang\id.js" />
+    <Content Include="ckeditor\lang\is.js" />
+    <Content Include="ckeditor\lang\it.js" />
+    <Content Include="ckeditor\lang\ja.js" />
+    <Content Include="ckeditor\lang\ka.js" />
+    <Content Include="ckeditor\lang\km.js" />
+    <Content Include="ckeditor\lang\ko.js" />
+    <Content Include="ckeditor\lang\ku.js" />
+    <Content Include="ckeditor\lang\lt.js" />
+    <Content Include="ckeditor\lang\lv.js" />
+    <Content Include="ckeditor\lang\mk.js" />
+    <Content Include="ckeditor\lang\mn.js" />
+    <Content Include="ckeditor\lang\ms.js" />
+    <Content Include="ckeditor\lang\nb.js" />
+    <Content Include="ckeditor\lang\nl.js" />
+    <Content Include="ckeditor\lang\no.js" />
+    <Content Include="ckeditor\lang\pl.js" />
+    <Content Include="ckeditor\lang\pt-br.js" />
+    <Content Include="ckeditor\lang\pt.js" />
+    <Content Include="ckeditor\lang\ro.js" />
+    <Content Include="ckeditor\lang\ru.js" />
+    <Content Include="ckeditor\lang\si.js" />
+    <Content Include="ckeditor\lang\sk.js" />
+    <Content Include="ckeditor\lang\sl.js" />
+    <Content Include="ckeditor\lang\sq.js" />
+    <Content Include="ckeditor\lang\sr-latn.js" />
+    <Content Include="ckeditor\lang\sr.js" />
+    <Content Include="ckeditor\lang\sv.js" />
+    <Content Include="ckeditor\lang\th.js" />
+    <Content Include="ckeditor\lang\tr.js" />
+    <Content Include="ckeditor\lang\tt.js" />
+    <Content Include="ckeditor\lang\ug.js" />
+    <Content Include="ckeditor\lang\uk.js" />
+    <Content Include="ckeditor\lang\vi.js" />
+    <Content Include="ckeditor\lang\zh-cn.js" />
+    <Content Include="ckeditor\lang\zh.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\af.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\en-gb.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\eu.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\fo.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\tt.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\zh.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="ckeditor\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="ckeditor\plugins\icons.png" />
+    <Content Include="ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="ckeditor\plugins\magicline\images\hidpi\icon-rtl.png" />
+    <Content Include="ckeditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="ckeditor\plugins\magicline\images\icon-rtl.png" />
+    <Content Include="ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\af.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\da.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\eu.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ko.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\lt.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\tt.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\wsc_ie.js" />
+    <Content Include="ckeditor\samples\css\samples.css" />
+    <Content Include="ckeditor\samples\img\github-top.png" />
+    <Content Include="ckeditor\samples\img\header-bg.png" />
+    <Content Include="ckeditor\samples\img\header-separator.png" />
+    <Content Include="ckeditor\samples\img\logo.png" />
+    <Content Include="ckeditor\samples\img\navigation-tip.png" />
+    <Content Include="ckeditor\samples\index.html" />
+    <Content Include="ckeditor\samples\js\sample.js" />
+    <Content Include="ckeditor\samples\js\sf.js" />
+    <Content Include="ckeditor\samples\old\ajax.html" />
+    <Content Include="ckeditor\samples\old\api.html" />
+    <Content Include="ckeditor\samples\old\appendto.html" />
+    <Content Include="ckeditor\samples\old\assets\inlineall\logo.png" />
+    <Content Include="ckeditor\samples\old\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="ckeditor\samples\old\assets\sample.jpg" />
+    <Content Include="ckeditor\samples\old\assets\uilanguages\languages.js" />
+    <Content Include="ckeditor\samples\old\datafiltering.html" />
+    <Content Include="ckeditor\samples\old\dialog\assets\my_dialog.js" />
+    <Content Include="ckeditor\samples\old\dialog\dialog.html" />
+    <Content Include="ckeditor\samples\old\divreplace.html" />
+    <Content Include="ckeditor\samples\old\enterkey\enterkey.html" />
+    <Content Include="ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="ckeditor\samples\old\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="ckeditor\samples\old\htmlwriter\outputforflash.html" />
+    <Content Include="ckeditor\samples\old\htmlwriter\outputhtml.html" />
+    <Content Include="ckeditor\samples\old\index.html" />
+    <Content Include="ckeditor\samples\old\inlineall.html" />
+    <Content Include="ckeditor\samples\old\inlinebycode.html" />
+    <Content Include="ckeditor\samples\old\inlinetextarea.html" />
+    <Content Include="ckeditor\samples\old\jquery.html" />
+    <Content Include="ckeditor\samples\old\magicline\magicline.html" />
+    <Content Include="ckeditor\samples\old\readonly.html" />
+    <Content Include="ckeditor\samples\old\replacebyclass.html" />
+    <Content Include="ckeditor\samples\old\replacebycode.html" />
+    <Content Include="ckeditor\samples\old\sample.css" />
+    <Content Include="ckeditor\samples\old\sample.js" />
+    <Content Include="ckeditor\samples\old\tabindex.html" />
+    <Content Include="ckeditor\samples\old\toolbar\toolbar.html" />
+    <Content Include="ckeditor\samples\old\uicolor.html" />
+    <Content Include="ckeditor\samples\old\uilanguages.html" />
+    <Content Include="ckeditor\samples\old\wysiwygarea\fullpage.html" />
+    <Content Include="ckeditor\samples\old\xhtmlstyle.html" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\css\fontello.css" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\font\LICENSE.txt" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\index.html" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\js\abstracttoolbarmodifier.js" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\js\fulltoolbareditor.js" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\js\toolbarmodifier.js" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\js\toolbartextmodifier.js" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.css" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.js" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\javascript.js" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\neo.css" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.css" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.js" />
+    <Content Include="ckeditor\skins\moono\dialog.css" />
+    <Content Include="ckeditor\skins\moono\dialog_ie.css" />
+    <Content Include="ckeditor\skins\moono\dialog_ie7.css" />
+    <Content Include="ckeditor\skins\moono\dialog_ie8.css" />
+    <Content Include="ckeditor\skins\moono\dialog_iequirks.css" />
+    <Content Include="ckeditor\skins\moono\editor.css" />
+    <Content Include="ckeditor\skins\moono\editor_gecko.css" />
+    <Content Include="ckeditor\skins\moono\editor_ie.css" />
+    <Content Include="ckeditor\skins\moono\editor_ie7.css" />
+    <Content Include="ckeditor\skins\moono\editor_ie8.css" />
+    <Content Include="ckeditor\skins\moono\editor_iequirks.css" />
+    <Content Include="ckeditor\skins\moono\icons.png" />
+    <Content Include="ckeditor\skins\moono\icons_hidpi.png" />
+    <Content Include="ckeditor\skins\moono\images\arrow.png" />
+    <Content Include="ckeditor\skins\moono\images\close.png" />
+    <Content Include="ckeditor\skins\moono\images\hidpi\close.png" />
+    <Content Include="ckeditor\skins\moono\images\hidpi\lock-open.png" />
+    <Content Include="ckeditor\skins\moono\images\hidpi\lock.png" />
+    <Content Include="ckeditor\skins\moono\images\hidpi\refresh.png" />
+    <Content Include="ckeditor\skins\moono\images\lock-open.png" />
+    <Content Include="ckeditor\skins\moono\images\lock.png" />
+    <Content Include="ckeditor\skins\moono\images\refresh.png" />
+    <Content Include="ckeditor\skins\moono\images\spinner.gif" />
+    <Content Include="ckeditor\styles.js" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\mode.css" />
+    <Content Include="css\mode2.css" />
+    <Content Include="css\templatemo-style.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="images\logo.jpg" />
+    <Content Include="images\null.png" />
+    <Content Include="index.html" />
+    <Content Include="Login.aspx" />
+    <Content Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\json2.js" />
+    <Content Include="Scripts\usingdata.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin.cs" />
+    <Compile Include="chanpin\change.aspx.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="chanpin\change.aspx.designer.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="chanpin\chanpin.aspx.cs">
+      <DependentUpon>chanpin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="chanpin\chanpin.aspx.designer.cs">
+      <DependentUpon>chanpin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="chanpin\deletechanpin.aspx.cs">
+      <DependentUpon>deletechanpin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="chanpin\deletechanpin.aspx.designer.cs">
+      <DependentUpon>deletechanpin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="chanpin\insertchanpin.aspx.cs">
+      <DependentUpon>insertchanpin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="chanpin\insertchanpin.aspx.designer.cs">
+      <DependentUpon>insertchanpin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="chanpin\searchchanpin.aspx.cs">
+      <DependentUpon>searchchanpin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="chanpin\searchchanpin.aspx.designer.cs">
+      <DependentUpon>searchchanpin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="chanpin\selectforchangechanpin.aspx.cs">
+      <DependentUpon>selectforchangechanpin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="chanpin\selectforchangechanpin.aspx.designer.cs">
+      <DependentUpon>selectforchangechanpin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DbClass.cs" />
+    <Compile Include="dcwjxuanxiang\change.aspx.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dcwjxuanxiang\change.aspx.designer.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dcwjxuanxiang\dcwjxuanxiang.aspx.cs">
+      <DependentUpon>dcwjxuanxiang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dcwjxuanxiang\dcwjxuanxiang.aspx.designer.cs">
+      <DependentUpon>dcwjxuanxiang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dcwjxuanxiang\deletedcwjxuanxiang.aspx.cs">
+      <DependentUpon>deletedcwjxuanxiang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dcwjxuanxiang\deletedcwjxuanxiang.aspx.designer.cs">
+      <DependentUpon>deletedcwjxuanxiang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dcwjxuanxiang\getitems.aspx.cs">
+      <DependentUpon>getitems.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dcwjxuanxiang\getitems.aspx.designer.cs">
+      <DependentUpon>getitems.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dcwjxuanxiang\insertdcwjxuanxiang.aspx.cs">
+      <DependentUpon>insertdcwjxuanxiang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dcwjxuanxiang\insertdcwjxuanxiang.aspx.designer.cs">
+      <DependentUpon>insertdcwjxuanxiang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dcwjxuanxiang\look.aspx.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dcwjxuanxiang\look.aspx.designer.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dcwjxuanxiang\searchdcwjxuanxiang.aspx.cs">
+      <DependentUpon>searchdcwjxuanxiang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dcwjxuanxiang\searchdcwjxuanxiang.aspx.designer.cs">
+      <DependentUpon>searchdcwjxuanxiang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dcwjxuanxiang\selectforchangedcwjxuanxiang.aspx.cs">
+      <DependentUpon>selectforchangedcwjxuanxiang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dcwjxuanxiang\selectforchangedcwjxuanxiang.aspx.designer.cs">
+      <DependentUpon>selectforchangedcwjxuanxiang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dcwjxuanxiang\selectforchangetitle.aspx.cs">
+      <DependentUpon>selectforchangetitle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dcwjxuanxiang\selectforchangetitle.aspx.designer.cs">
+      <DependentUpon>selectforchangetitle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dcwj\change.aspx.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dcwj\change.aspx.designer.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dcwj\dcwj.aspx.cs">
+      <DependentUpon>dcwj.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dcwj\dcwj.aspx.designer.cs">
+      <DependentUpon>dcwj.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dcwj\deletedcwj.aspx.cs">
+      <DependentUpon>deletedcwj.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dcwj\deletedcwj.aspx.designer.cs">
+      <DependentUpon>deletedcwj.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dcwj\insertdcwj.aspx.cs">
+      <DependentUpon>insertdcwj.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dcwj\insertdcwj.aspx.designer.cs">
+      <DependentUpon>insertdcwj.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dcwj\look.aspx.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dcwj\look.aspx.designer.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dcwj\searchdcwj.aspx.cs">
+      <DependentUpon>searchdcwj.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dcwj\searchdcwj.aspx.designer.cs">
+      <DependentUpon>searchdcwj.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dcwj\selectforchangedcwj.aspx.cs">
+      <DependentUpon>selectforchangedcwj.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dcwj\selectforchangedcwj.aspx.designer.cs">
+      <DependentUpon>selectforchangedcwj.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dcwj\select_items.aspx.cs">
+      <DependentUpon>select_items.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dcwj\select_items.aspx.designer.cs">
+      <DependentUpon>select_items.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fenxi\change.aspx.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fenxi\change.aspx.designer.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fenxi\deletefenxi.aspx.cs">
+      <DependentUpon>deletefenxi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fenxi\deletefenxi.aspx.designer.cs">
+      <DependentUpon>deletefenxi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fenxi\fenxi.aspx.cs">
+      <DependentUpon>fenxi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fenxi\fenxi.aspx.designer.cs">
+      <DependentUpon>fenxi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fenxi\insertfenxi.aspx.cs">
+      <DependentUpon>insertfenxi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fenxi\insertfenxi.aspx.designer.cs">
+      <DependentUpon>insertfenxi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fenxi\look.aspx.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fenxi\look.aspx.designer.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fenxi\searchfenxi.aspx.cs">
+      <DependentUpon>searchfenxi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fenxi\searchfenxi.aspx.designer.cs">
+      <DependentUpon>searchfenxi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fenxi\selectforchangefenxi.aspx.cs">
+      <DependentUpon>selectforchangefenxi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fenxi\selectforchangefenxi.aspx.designer.cs">
+      <DependentUpon>selectforchangefenxi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gongqiu\change.aspx.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gongqiu\change.aspx.designer.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gongqiu\delete.aspx.cs">
+      <DependentUpon>delete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gongqiu\delete.aspx.designer.cs">
+      <DependentUpon>delete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gongqiu\gongqiu.aspx.cs">
+      <DependentUpon>gongqiu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gongqiu\gongqiu.aspx.designer.cs">
+      <DependentUpon>gongqiu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gongqiu\insertgongqiu.aspx.cs">
+      <DependentUpon>insertgongqiu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gongqiu\insertgongqiu.aspx.designer.cs">
+      <DependentUpon>insertgongqiu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gongqiu\look.aspx.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gongqiu\look.aspx.designer.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gongqiu\selectforchangegongqiu.aspx.cs">
+      <DependentUpon>selectforchangegongqiu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gongqiu\selectforchangegongqiu.aspx.designer.cs">
+      <DependentUpon>selectforchangegongqiu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jiage\change.aspx.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jiage\change.aspx.designer.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jiage\deletejiage.aspx.cs">
+      <DependentUpon>deletejiage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jiage\deletejiage.aspx.designer.cs">
+      <DependentUpon>deletejiage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jiage\insertjiage.aspx.cs">
+      <DependentUpon>insertjiage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jiage\insertjiage.aspx.designer.cs">
+      <DependentUpon>insertjiage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jiage\jiage.aspx.cs">
+      <DependentUpon>jiage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jiage\jiage.aspx.designer.cs">
+      <DependentUpon>jiage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jiage\look.aspx.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jiage\look.aspx.designer.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jiage\searchjiage.aspx.cs">
+      <DependentUpon>searchjiage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jiage\searchjiage.aspx.designer.cs">
+      <DependentUpon>searchjiage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jiage\selectforchangejiage.aspx.cs">
+      <DependentUpon>selectforchangejiage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jiage\selectforchangejiage.aspx.designer.cs">
+      <DependentUpon>selectforchangejiage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jiance\change.aspx.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jiance\change.aspx.designer.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jiance\deletejiance.aspx.cs">
+      <DependentUpon>deletejiance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jiance\deletejiance.aspx.designer.cs">
+      <DependentUpon>deletejiance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jiance\insertjiance.aspx.cs">
+      <DependentUpon>insertjiance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jiance\insertjiance.aspx.designer.cs">
+      <DependentUpon>insertjiance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jiance\jiance.aspx.cs">
+      <DependentUpon>jiance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jiance\jiance.aspx.designer.cs">
+      <DependentUpon>jiance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jiance\look.aspx.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jiance\look.aspx.designer.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jiance\searchjiance.aspx.cs">
+      <DependentUpon>searchjiance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jiance\searchjiance.aspx.designer.cs">
+      <DependentUpon>searchjiance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jiance\selectforchangejiance.aspx.cs">
+      <DependentUpon>selectforchangejiance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jiance\selectforchangejiance.aspx.designer.cs">
+      <DependentUpon>selectforchangejiance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JsonTool.cs" />
+    <Compile Include="liangshi\change.aspx.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="liangshi\change.aspx.designer.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="liangshi\deleteliangshi.aspx.cs">
+      <DependentUpon>deleteliangshi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="liangshi\deleteliangshi.aspx.designer.cs">
+      <DependentUpon>deleteliangshi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="liangshi\insertliangshi.aspx.cs">
+      <DependentUpon>insertliangshi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="liangshi\insertliangshi.aspx.designer.cs">
+      <DependentUpon>insertliangshi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="liangshi\liangshi.aspx.cs">
+      <DependentUpon>liangshi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="liangshi\liangshi.aspx.designer.cs">
+      <DependentUpon>liangshi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="liangshi\look.aspx.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="liangshi\look.aspx.designer.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="liangshi\searchliangshi.aspx.cs">
+      <DependentUpon>searchliangshi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="liangshi\searchliangshi.aspx.designer.cs">
+      <DependentUpon>searchliangshi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="liangshi\selectforchangeliangshi.aspx.cs">
+      <DependentUpon>selectforchangeliangshi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="liangshi\selectforchangeliangshi.aspx.designer.cs">
+      <DependentUpon>selectforchangeliangshi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="nongzi\deletenongzi.aspx.cs">
+      <DependentUpon>deletenongzi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nongzi\deletenongzi.aspx.designer.cs">
+      <DependentUpon>deletenongzi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="nongzi\insertnongzi.aspx.cs">
+      <DependentUpon>insertnongzi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nongzi\insertnongzi.aspx.designer.cs">
+      <DependentUpon>insertnongzi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="nongzi\look.aspx.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nongzi\look.aspx.designer.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="nongzi\searchnongzi.aspx.cs">
+      <DependentUpon>searchnongzi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nongzi\searchnongzi.aspx.designer.cs">
+      <DependentUpon>searchnongzi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="nongzi\selectforchangenongzi.aspx.cs">
+      <DependentUpon>selectforchangenongzi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nongzi\selectforchangenongzi.aspx.designer.cs">
+      <DependentUpon>selectforchangenongzi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="nongzi\selectnz.aspx.cs">
+      <DependentUpon>selectnz.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nongzi\selectnz.aspx.designer.cs">
+      <DependentUpon>selectnz.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="nongzi\updatenz.aspx.cs">
+      <DependentUpon>updatenz.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nongzi\updatenz.aspx.designer.cs">
+      <DependentUpon>updatenz.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="qixiang\change.aspx.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="qixiang\change.aspx.designer.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="qixiang\deleteqixiang.aspx.cs">
+      <DependentUpon>deleteqixiang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="qixiang\deleteqixiang.aspx.designer.cs">
+      <DependentUpon>deleteqixiang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="qixiang\insertqixiang.aspx.cs">
+      <DependentUpon>insertqixiang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="qixiang\insertqixiang.aspx.designer.cs">
+      <DependentUpon>insertqixiang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="qixiang\look.aspx.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="qixiang\look.aspx.designer.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="qixiang\qixiang.aspx.cs">
+      <DependentUpon>qixiang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="qixiang\qixiang.aspx.designer.cs">
+      <DependentUpon>qixiang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="qixiang\searchqixiang.aspx.cs">
+      <DependentUpon>searchqixiang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="qixiang\searchqixiang.aspx.designer.cs">
+      <DependentUpon>searchqixiang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="qixiang\selectforchangeqixiang.aspx.cs">
+      <DependentUpon>selectforchangeqixiang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="qixiang\selectforchangeqixiang.aspx.designer.cs">
+      <DependentUpon>selectforchangeqixiang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shichang\change.aspx.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shichang\change.aspx.designer.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shichang\deleteshichang.aspx.cs">
+      <DependentUpon>deleteshichang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shichang\deleteshichang.aspx.designer.cs">
+      <DependentUpon>deleteshichang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shichang\insertshichang.aspx.cs">
+      <DependentUpon>insertshichang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shichang\insertshichang.aspx.designer.cs">
+      <DependentUpon>insertshichang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shichang\look.aspx.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shichang\look.aspx.designer.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shichang\searchshichang.aspx.cs">
+      <DependentUpon>searchshichang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shichang\searchshichang.aspx.designer.cs">
+      <DependentUpon>searchshichang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shichang\selectforchangeshichang.aspx.cs">
+      <DependentUpon>selectforchangeshichang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shichang\selectforchangeshichang.aspx.designer.cs">
+      <DependentUpon>selectforchangeshichang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shichang\shichang.aspx.cs">
+      <DependentUpon>shichang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shichang\shichang.aspx.designer.cs">
+      <DependentUpon>shichang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shucai\change.aspx.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shucai\change.aspx.designer.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shucai\deleteshucai.aspx.cs">
+      <DependentUpon>deleteshucai.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shucai\deleteshucai.aspx.designer.cs">
+      <DependentUpon>deleteshucai.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shucai\insertshucai.aspx.cs">
+      <DependentUpon>insertshucai.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shucai\insertshucai.aspx.designer.cs">
+      <DependentUpon>insertshucai.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shucai\look.aspx.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shucai\look.aspx.designer.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shucai\searchshucai.aspx.cs">
+      <DependentUpon>searchshucai.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shucai\searchshucai.aspx.designer.cs">
+      <DependentUpon>searchshucai.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shucai\selectforchangeshucai.aspx.cs">
+      <DependentUpon>selectforchangeshucai.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shucai\selectforchangeshucai.aspx.designer.cs">
+      <DependentUpon>selectforchangeshucai.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shucai\shucai.aspx.cs">
+      <DependentUpon>shucai.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shucai\shucai.aspx.designer.cs">
+      <DependentUpon>shucai.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\change.aspx.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\change.aspx.designer.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\check.aspx.cs">
+      <DependentUpon>check.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\check.aspx.designer.cs">
+      <DependentUpon>check.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\insertuser.aspx.cs">
+      <DependentUpon>insertuser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\insertuser.aspx.designer.cs">
+      <DependentUpon>insertuser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\look.aspx.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\look.aspx.designer.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\searchuser.aspx.cs">
+      <DependentUpon>searchuser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\searchuser.aspx.designer.cs">
+      <DependentUpon>searchuser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\selectforchangeuser.aspx.cs">
+      <DependentUpon>selectforchangeuser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\selectforchangeuser.aspx.designer.cs">
+      <DependentUpon>selectforchangeuser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\user.aspx.cs">
+      <DependentUpon>user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\user.aspx.designer.cs">
+      <DependentUpon>user.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webimg.aspx.cs">
+      <DependentUpon>webimg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webimg.aspx.designer.cs">
+      <DependentUpon>webimg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="zhuanjia\change.aspx.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zhuanjia\change.aspx.designer.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="zhuanjia\deletezhuanjia.aspx.cs">
+      <DependentUpon>deletezhuanjia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zhuanjia\deletezhuanjia.aspx.designer.cs">
+      <DependentUpon>deletezhuanjia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="zhuanjia\insertzhuanjia.aspx.cs">
+      <DependentUpon>insertzhuanjia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zhuanjia\insertzhuanjia.aspx.designer.cs">
+      <DependentUpon>insertzhuanjia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="zhuanjia\look.aspx.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zhuanjia\look.aspx.designer.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="zhuanjia\searchzhuanjia.aspx.cs">
+      <DependentUpon>searchzhuanjia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zhuanjia\searchzhuanjia.aspx.designer.cs">
+      <DependentUpon>searchzhuanjia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="zhuanjia\selectforchangezhuanjia.aspx.cs">
+      <DependentUpon>selectforchangezhuanjia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zhuanjia\selectforchangezhuanjia.aspx.designer.cs">
+      <DependentUpon>selectforchangezhuanjia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="zhuanjia\select_items.aspx.cs">
+      <DependentUpon>select_items.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zhuanjia\select_items.aspx.designer.cs">
+      <DependentUpon>select_items.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="zhuanjia\zhuanjia.aspx.cs">
+      <DependentUpon>zhuanjia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zhuanjia\zhuanjia.aspx.designer.cs">
+      <DependentUpon>zhuanjia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="zhuce.aspx.cs">
+      <DependentUpon>zhuce.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zhuce.aspx.designer.cs">
+      <DependentUpon>zhuce.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="zixun\change.aspx.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zixun\change.aspx.designer.cs">
+      <DependentUpon>change.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="zixun\deletezixun.aspx.cs">
+      <DependentUpon>deletezixun.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zixun\deletezixun.aspx.designer.cs">
+      <DependentUpon>deletezixun.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="zixun\insertzixun.aspx.cs">
+      <DependentUpon>insertzixun.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zixun\insertzixun.aspx.designer.cs">
+      <DependentUpon>insertzixun.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="zixun\look.aspx.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zixun\look.aspx.designer.cs">
+      <DependentUpon>look.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="zixun\searchzixun.aspx.cs">
+      <DependentUpon>searchzixun.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zixun\searchzixun.aspx.designer.cs">
+      <DependentUpon>searchzixun.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="zixun\selectforchangezixun.aspx.cs">
+      <DependentUpon>selectforchangezixun.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zixun\selectforchangezixun.aspx.designer.cs">
+      <DependentUpon>selectforchangezixun.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="zixun\zixun.aspx.cs">
+      <DependentUpon>zixun.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zixun\zixun.aspx.designer.cs">
+      <DependentUpon>zixun.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="uploadimg\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ckeditor\CHANGES.md" />
+    <Content Include="ckeditor\LICENSE.md" />
+    <Content Include="ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="ckeditor\plugins\scayt\README.md" />
+    <Content Include="ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="ckeditor\plugins\wsc\README.md" />
+    <Content Include="ckeditor\README.md" />
+    <Content Include="ckeditor\samples\old\assets\posteddata.php" />
+    <Content Include="ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="ckeditor\samples\old\sample_posteddata.php" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\font\config.json" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\font\fontello.eot" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\font\fontello.svg" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\font\fontello.ttf" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
+    <Content Include="ckeditor\skins\moono\readme.md" />
+    <None Include="Properties\PublishProfiles\nwadm.pubxml" />
+    <None Include="Properties\PublishProfiles\nw_admin.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3113</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3113/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="searchshucai.aspx.cs" Inherits="NWadmin.shucai.searchshucai" %>

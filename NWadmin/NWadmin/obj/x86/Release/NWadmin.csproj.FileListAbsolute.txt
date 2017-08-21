@@ -1,0 +1,30 @@
+C:\Users\Elian\Desktop\NWadmin\NWadmin\NWadmin\bin\NWadmin.dll.config
+C:\Users\Elian\Desktop\NWadmin\NWadmin\NWadmin\bin\NWadmin.dll
+C:\Users\Elian\Desktop\NWadmin\NWadmin\NWadmin\bin\NWadmin.pdb
+C:\Users\Elian\Desktop\NWadmin\NWadmin\NWadmin\obj\x86\Release\NWadmin.csprojResolveAssemblyReference.cache
+C:\Users\Elian\Desktop\NWadmin\NWadmin\NWadmin\obj\x86\Release\NWadmin.dll
+C:\Users\Elian\Desktop\NWadmin\NWadmin\NWadmin\obj\x86\Release\NWadmin.pdb
+F:\Microsoft Visual Studio 12.0\MyProject\NWadmin\NWadmin\NWadmin\bin\NWadmin.dll.config
+F:\Microsoft Visual Studio 12.0\MyProject\NWadmin\NWadmin\NWadmin\bin\NWadmin.dll
+F:\Microsoft Visual Studio 12.0\MyProject\NWadmin\NWadmin\NWadmin\bin\NWadmin.pdb
+F:\Microsoft Visual Studio 12.0\MyProject\NWadmin\NWadmin\NWadmin\obj\x86\Release\NWadmin.csprojResolveAssemblyReference.cache
+F:\Microsoft Visual Studio 12.0\MyProject\NWadmin\NWadmin\NWadmin\obj\x86\Release\NWadmin.dll
+F:\Microsoft Visual Studio 12.0\MyProject\NWadmin\NWadmin\NWadmin\obj\x86\Release\NWadmin.pdb
+C:\Users\NJT\Desktop\NWadmin\NWadmin\NWadmin\bin\NWadmin.dll.config
+C:\Users\NJT\Desktop\NWadmin\NWadmin\NWadmin\bin\NWadmin.dll
+C:\Users\NJT\Desktop\NWadmin\NWadmin\NWadmin\bin\NWadmin.pdb
+C:\Users\NJT\Desktop\NWadmin\NWadmin\NWadmin\obj\x86\Release\NWadmin.csprojResolveAssemblyReference.cache
+C:\Users\NJT\Desktop\NWadmin\NWadmin\NWadmin\obj\x86\Release\NWadmin.dll
+C:\Users\NJT\Desktop\NWadmin\NWadmin\NWadmin\obj\x86\Release\NWadmin.pdb
+C:\Users\NJT\Desktop\NWadmin\NWadmin\obj\x86\Release\NWadmin.csprojResolveAssemblyReference.cache
+C:\Users\NJT\Desktop\NWadmin\NWadmin\obj\x86\Release\NWadmin.dll
+C:\Users\NJT\Desktop\NWadmin\NWadmin\bin\NWadmin.dll.config
+C:\Users\NJT\Desktop\NWadmin\NWadmin\bin\NWadmin.dll
+C:\Users\NJT\Desktop\NWadmin\NWadmin\bin\NWadmin.pdb
+C:\Users\NJT\Desktop\NWadmin\NWadmin\obj\x86\Release\NWadmin.pdb
+E:\workspace_VS\NWadmin\NWadmin\bin\NWadmin.dll.config
+E:\workspace_VS\NWadmin\NWadmin\bin\NWadmin.dll
+E:\workspace_VS\NWadmin\NWadmin\bin\NWadmin.pdb
+E:\workspace_VS\NWadmin\NWadmin\obj\x86\Release\NWadmin.csprojResolveAssemblyReference.cache
+E:\workspace_VS\NWadmin\NWadmin\obj\x86\Release\NWadmin.dll
+E:\workspace_VS\NWadmin\NWadmin\obj\x86\Release\NWadmin.pdb

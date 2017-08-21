@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>吉林省农产品市场监测预警平台</title>
+<meta name="keywords" content="$Class_Keywords$" />
+<meta name="description" content="$Class_Description$" />
+<link href="/css/HituxCMSBigRed/common.css" rel="stylesheet" type="text/css" />
+<link href="../css/HituxCMSBigRed/inner (1).css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/functions.js"></script>
+<script type="text/javascript" src="/images/iepng/iepngfix_tilebg.js"></script>
+<script type="text/javascript">
+window.onerror=function(){return true;}
+</script>
+    <script>
+        ///蔬菜专栏页面
+        var threestate = 2;
+        var accord = null;
+        var dangqian = 1;
+        var page = 1;
+        function changepage(flag) {
+            if (flag == "下一页") {
+                if (dangqian == page) {
+                    alert("已经是最后一页");
+                }
+                else {
+                    getshucai(parseInt(dangqian) + 1);
+                }
+            }
+            else {
+                if (dangqian == 1) {
+                    alert("已经是第一页");
+                }
+                else
+                    getshucai(dangqian - 1);
+            }
+        }
+        function getshucai(index) {
+            dangqian = index;
+            var xmlhttp;
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+
+            } else { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            if (threestate == 2) {
+                xmlhttp.open("get", "../../Sever/shucai/selectshucai.aspx?time=" + Date.now.toString() + "&index=" + index, true);
+            }
+            else {
+                xmlhttp.open("get", "../../Sever/shucai/search.aspx?time=" + Date.now.toString() + "&index=" + index + "&accord=" + accord + "&flag=" + threestate, true);
+
+            }
+            xmlhttp.send(null);
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {//检查服务是否有返回
+                    js = JSON.parse(xmlhttp.responseText);//获取返回内容并把其转换为JSON格式
+                    var body = js.body;
+                    var j = 0;
+                    var type = document.getElementsByClassName("bb");
+                    var message = document.getElementsByClassName("aa");
+                    var tim = document.getElementsByClassName("riqi");
+                    for (var i = 0; i < body.length; i++) {
+                        type[i].style.visibility = "visible";
+                        type[i].innerHTML = "【" + unescape(body[i].SCZL_LEIXING) + "】";
+                    }
+                    for (var col = 1; col <= body.length; col++)
+                    {
+                        message[col - 1].style.visibility = "visible";
+                        message[col-1].innerHTML = "<font color=\"#090\">•</font>&nbsp;" + unescape(body[col-1].SCZL_TIMU);
+                    }
+                    for (var t = 0; t < body.length; t++) {
+                        tim[t].style.visibility = "visible";
+                        tim[t].innerHTML = unescape(body[t].SCZL_SHIJIAN);
+                        var s = body[t].SCZL_SHIJIAN;
+                        tim[t].innerHTML = unescape(s.substr(0, 10));
+                    }
+                    for (var col = body.length + 1; col < 9; col++) {
+                        type[col - 1].style.visibility = "hidden";
+                        message[col - 1].style.visibility = "hidden";
+                        tim[col - 1].style.visibility = "hidden";
+                    }
+
+                    /////待修改
+                        page = js.code;
+                        var pageindex = document.getElementById("pageindex");
+                        pageindex.innerHTML = "";
+                        for (var pagesize = 0; pagesize < page; pagesize++) {
+                            pageindex.innerHTML += "<option value=" + (pagesize) + "  onclick=getshucai(this.innerHTML)>" + (pagesize + 1) + "</option>";
+                        }
+                        pageindex.selectedIndex = dangqian - 1;
+                    }
+                }
+        }
+
+        function gettitle(title) {
+            var real = title.split(";");
+            location.href = '/html/endlink.html?title=' + real[1] + ';shucai';
+        }
+        function searchs(s) {
+            threestate = 0;
+            accord = s;
+            dangqian = 1;
+            getshucai(1);
+        }
+    </script>
+</head>
+
+<body onload="getshucai(1)">
+<div id="wrapper">
+
+<!--head start-->
+<div id="head">
+
+<!--top start -->
+<div class="top">
+<div class="clearfix"></div>
+<div class="TopLogo">
+<div class="logo"><a href="/"><img src="/images/up_images/logo.png"></a></div>
+</div>
+
+</div>
+<!--top end-->
+
+<!--nav start-->
+<div id="NavLink">
+<div class="NavBG">
+<!--Head Menu Start-->
+<ul id='sddm'>
+    <li class='CurrentLi'><a href='/'>网站首页</a></li>
+    <li><a href='/About/' onmouseover="mopen('m2')" onmouseout='mclosetime()'>综合资讯</a></li>
+    <li><a href='/about1/' onmouseover="mopen('m2')" onmouseout='mclosetime()'>粮食专栏</a>
+    </li>
+    <li><a href='/Honor/' onmouseover="mopen('m3')" onmouseout='mclosetime()'>蔬菜专栏</a>
+    </li> 
+    <li><a href='/Product/' onmouseover="mopen('m4')" onmouseout='mclosetime()'>农资专栏</a>
+    </li>
+    <li><a href='/news/' onmouseover="mopen('m5')" onmouseout='mclosetime()'>专家观点</a></li> 
+    <li><a href='/Case/' onmouseover="mopen('m6')" onmouseout='mclosetime()'>数据管理</a> </li>
+    <li><a href='/Recruit' onmouseover="mopen('m7')" onmouseout='mclosetime()'>分析预警</a></li>
+    <li><a href='/Monitor' onmouseover="mopen('m8')" onmouseout='mclosetime()'>监测报告</a></li>
+</ul>
+<!--Head Menu End-->
+</div>
+<div class="clearfix"></div>
+</div>
+<!--nav end-->
+
+</div>
+<!--head end-->
+<!--body start-->
+<div id="body">
+<!--focus start-->
+<div id="InnerBanner">
+<script src='/ADs/112.js' type='text/javascript'></script>
+</div>
+<!--foncus end-->
+<div class="HeightTab clearfix"></div>
+<!--inner start -->
+<div class="inner">
+<!--left start-->
+<div class="left">
+<div class="Sbox">
+<div class="topic">市场分析</div>
+<div class="ClassNav">
+<div class="NavTree">
+<div class="blank">
+    <ul>
+<li><a onclick="searchs(this.innerHTML)">价格行情</a></li>
+<li><a onclick="searchs(this.innerHTML)">走势分析</a></li>
+<li><a onclick="searchs(this.innerHTML)">价格指数</a></li>  
+ </ul>
+</div>
+</div>
+</div>
+<!--<div class="Sbox">
+<div class="topic">价格指数</div>
+<div class="list">
+<dl><dd><a href='/html/endlink.html' target='_blank' title='5月9日长春玉米价格'>5月9日长春玉米价格户</a></dd></dl>
+</div>
+
+</div>-->
+</div>
+ <div class="HeightTab clearfix"></div>
+
+<div class="HeightTab clearfix"></div>
+<div class="Sbox">
+</div>
+</div>
+<!--left end-->
+<!--right start-->
+<div class="right">
+<div class="Position"><span>你的位置：<a href="/">首页</a> > <a href='/Honor/'>蔬菜专栏</a></span></div>
+
+<!--main start-->
+<div class="main">
+
+<!--image start-->
+
+<div class='DivList2'>
+            <div class='DivLi'><span class="bb" style="color:#3E7433">【价格行情】</span> <a onclick="gettitle(this.innerHTML)" class="aa" target='_blank' title='预警近期猪价有小幅降价'>预警近期猪价有小幅降价</a><span class="riqi" style="float:right;padding-right:0px;color:#C00">2015/11/30</span></div>
+            <div class='DivLi'><span class="bb" style="color:#3E7433">【价格行情】</span> <a onclick="gettitle(this.innerHTML)" class="aa" target='_blank' title='稻苗三叶后，棚内温度应控制在... '>稻苗三叶后，棚内温度应控制在... </a><span class="riqi" style="float:right;padding-right:0px;color:#C00">2015/11/30</span></div>
+            <div class='DivLi'><span class="bb" style="color:#3E7433">【价格行情】</span> <a onclick="gettitle(this.innerHTML)" class="aa" target='_blank' title='农业部:第二期活猪'>农业部:第二期活猪</a><span class="riqi" style="float:right;padding-right:0px;color:#C00">2015/11/30</span></div>
+            <div class='DivLi'><span class="bb" style="color:#3E7433">【价格行情】</span> <a onclick="gettitle(this.innerHTML)" class="aa" target='_blank' title='稻苗三叶后，棚内温度应控制在...'>稻苗三叶后，棚内温度应控制在...</a><span class="riqi" style="float:right;padding-right:0px;color:#C00">2015/11/30</span></div>
+            <div class='DivLi'><span class="bb" style="color:#3E7433">【价格行情】</span> <a onclick="gettitle(this.innerHTML)" class="aa" target='_blank' title='5月9日长春玉米价格...'>5月9日长春玉米价格...</a><span class="riqi" style="float:right;padding-right:0px;color:#C00">2015/11/30</span></div>
+            <div class='DivLi'><span class="bb" style="color:#3E7433">【价格行情】</span> <a onclick="gettitle(this.innerHTML)" class="aa" target='_blank' title='稻苗三叶后，棚内温度应控制在...'>稻苗三叶后，棚内温度应控制在...</a><span class="riqi" style="float:right;padding-right:0px;color:#C00">2015/11/30</span></div>
+            <div class='DivLi'><span class="bb" style="color:#3E7433">【价格行情】</span> <a onclick="gettitle(this.innerHTML)" class="aa" target='_blank' title='5月9日长春玉米价格...'>5月9日长春玉米价格...</a><span class="riqi" style="float:right;padding-right:0px;color:#C00">2015/11/30</span></div>
+            <div class='DivLi'><span class="bb" style="color:#3E7433">【价格行情】</span> <a onclick="gettitle(this.innerHTML)" class="aa" target='_blank' title='稻苗三叶后，棚内温度应控制在...'>稻苗三叶后，棚内温度应控制在...</a><span class="riqi" style="float:right;padding-right:0px;color:#C00">2015/11/30</span></div>
+            <div class='clearfix'></div>
+        </div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<!--image end -->
+
+</div>
+<!--main end-->
+</div>
+<!--right end-->
+    <div style="text-align:center">
+        <table style="margin:auto">
+            <tr>
+                <td>
+                    <a onclick="changepage(this.innerHTML)">上一页</a>
+                </td>
+                <td>
+                    &nbsp;
+                    <select id="pageindex">
+                        <option>1</option>
+                    </select>
+                    &nabla;
+                </td>
+                <td>
+                    <a style="target='_blank'" onclick="changepage(this.innerHTML)">下一页</a>
+                </td>
+            </tr>
+        </table>
+        </divstyle>
+        <!--right end-->
+    </div>
+</div>
+<!--inner end-->
+</div>
+<!--body end-->
+<div class="HeightTab clearfix"></div>
+<!--footer start-->
+<div id="footer">
+<div class="inner">
+<div class='BottomNav'><a href="/">网站首页</a><br />
+吉林省农村经济信息中心 联系电话：0431-85386281 电子邮件：admin@jl.gov.cn
+</div>
+</div>
+</div>
+<!--footer end -->
+
+
+</div>
+<script type="text/javascript" src="/js/ServiceCenter.js"></script>
+
+</body>
+</html>
+<!--
+Powered By HituxCMS ASP V2.1   
+-->

@@ -1,0 +1,652 @@
+﻿<html>
+<head>
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/templatemo-style.css" rel="stylesheet">
+    <link href="css/mode.css" rel="stylesheet" />
+    <script src="Scripts/json2.js"></script>
+    <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+
+    <script>
+        var power = getCookie("type");
+        var chanpinid;//储存id
+        var dangqian = 1;
+        var page = 1;
+        var threestate = 2;
+        var accord = null;
+        var inorup;//0表示弹出框时插入，1表示弹出框时修改
+       function getCookie(name) {
+
+            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+
+
+            if (arr = document.cookie.match(reg))
+                return unescape(arr[2]);
+            else
+                return null;
+        }
+        function c() {
+            var updatediv = document.getElementById("update");
+            updatediv.style.display = "none";
+            parent.document.documentElement.scrollTop = parent.document.body.scrollTop = 0;
+            document.getElementById("chanpinbody").style.opacity = 1;
+            document.getElementById("chanpinbody").style.filter = "alpha(opacity = 100)";
+            document.getElementById("chanpinbody").style.backgroundColor = "#fff";
+        }
+        function changediv(obj)
+        {
+            inorup = 1;
+            var updatediv = document.getElementById("update");
+            updatediv.style.display = "block";
+            parent.document.documentElement.scrollTop = parent.document.body.scrollTop = 0;
+            document.getElementById("chanpinbody").style.opacity = 0.1;
+            document.getElementById("chanpinbody").style.filter = "alpha(opacity = 30)";
+            document.getElementById("chanpinbody").style.backgroundColor = "#383838";//虚化背景
+            var xmlhttp;
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+           chanpinid = obj.parentNode.parentNode.getElementsByTagName('td')[0].innerHTML;
+           xmlhttp.open("get", "chanpin/selectforchangechanpin.aspx?id=" + chanpinid + "&time=" + Date.now.toString(), false);
+            xmlhttp.send(null);
+            var js = JSON.parse(xmlhttp.responseText);
+            var body = js.body;
+            document.getElementById("a_title").value = unescape(body[0].ADDRESS);
+            document.getElementById("a_pinzhong").value = unescape(body[0].PINZHONG);
+            document.getElementById("a_jiashoujia").value = unescape(body[0].ZUOJIA_SHOUJIA);
+            document.getElementById("a_dianshoujia").value = unescape(body[0].DIANSHANG_SHOUJIA);
+            document.getElementById("a_tongbi").value = unescape(body[0].TONGBI);
+            document.getElementById("a_huanbi").value = unescape(body[0].HUANBI);
+            document.getElementById("a_bodong").value = unescape(body[0].BODONG_STATICS);
+            document.getElementById("a_author").value = getCookie("zh");
+        }
+        function change()
+        {
+            var title = document.getElementById("a_title").value;
+            var pinzhong = document.getElementById("a_pinzhong").value;
+            var jiashoujia = document.getElementById("a_jiashoujia").value;
+            var dianshoujia = document.getElementById("a_dianshoujia").value;
+            var tongbi = document.getElementById("a_tongbi").value;
+            var huanbi = document.getElementById("a_huanbi").value;
+            var bodong = document.getElementById("a_bodong").value;
+            var author = document.getElementById("a_author").value;
+            var FileController = "chanpin/change.aspx";// 接收上传文件的后台地址
+            var form = new FormData();
+           
+            form.append("chanpinid", chanpinid);
+            form.append("pinzhong", pinzhong);
+            form.append("jiashoujia", jiashoujia);
+            form.append("dianshoujia", dianshoujia);
+            form.append("title", title);// 可以增加表单数据
+            form.append("author", author);
+            form.append("tongbi", tongbi);
+            form.append("huanbi", huanbi);
+            form.append("bodong", bodong);
+         
+            // XMLHttpRequest 对象
+
+            var xhr = new XMLHttpRequest();
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xhr = new XMLHttpRequest();
+            }
+            else { // code for IE6, IE5
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhr.open("post", FileController, true);
+
+
+            xhr.onload = function () {
+
+                alert("提交成功!");
+                location.replace(location.href);
+
+            };
+            xhr.send(form);
+        }
+
+
+
+        function tianjia() {
+            var title = document.getElementById("a_title").value;
+            var pinzhong = document.getElementById("a_pinzhong").value;
+            var jiashoujia = document.getElementById("a_jiashoujia").value;
+            var dianshoujia = document.getElementById("a_dianshoujia").value;
+            var tongbi = document.getElementById("a_tongbi").value;
+            var huanbi = document.getElementById("a_huanbi").value;
+            var bodong = document.getElementById("a_bodong").value;
+            var author = document.getElementById("a_author").value;
+            var FileController = "chanpin/insertchanpin.aspx";                    // 接收上传文件的后台地址
+            var form = new FormData();
+            form.append("pinzhong", pinzhong);
+            form.append("jiashoujia", jiashoujia);
+            form.append("dianshoujia", dianshoujia);
+            form.append("title", title);// 可以增加表单数据
+            form.append("author", author);
+            form.append("tongbi", tongbi);
+            form.append("huanbi", huanbi);
+            form.append("bodong", bodong);
+
+            // XMLHttpRequest 对象
+
+            var xhr = new XMLHttpRequest();
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xhr = new XMLHttpRequest();
+            }
+            else { // code for IE6, IE5
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhr.open("post", FileController, true);
+
+
+            xhr.onload = function () {
+
+                alert("提交成功!");
+                location.replace(location.href);
+
+            };
+            xhr.send(form);
+        }
+        function tijiao() {
+            if (inorup == 0) {
+
+                tianjia();
+            }
+            else
+            {
+                change();
+            }
+        }
+        function updatediv() {
+            document.getElementById("a_title").value = "";
+            document.getElementById("a_pinzhong").value = "";
+            document.getElementById("a_jiashoujia").value = "";
+            document.getElementById("a_dianshoujia").value = "";
+            document.getElementById("a_tongbi").value = "";
+            document.getElementById("a_huanbi").value = "";
+            document.getElementById("a_bodong").value = "";
+            document.getElementById("a_author").value = getCookie("zh");
+            inorup = 0;
+            var updatediv = document.getElementById("update");
+            updatediv.style.display = "block";
+            parent.document.documentElement.scrollTop =parent.document.body.scrollTop = 0;
+            document.getElementById("chanpinbody").style.opacity = 0.1;
+            document.getElementById("chanpinbody").style.filter = "alpha(opacity = 30)";
+            document.getElementById("chanpinbody").style.backgroundColor = "#383838";
+        }
+
+        function ApplyStyle(s)
+        {
+            document.getElementById("mytab").className = s.innerText;
+        }
+
+        function changepage(flag) {
+            var pk = document.getElementById('mytab').getElementsByTagName('tr');
+            var k = pk[8].style.visibility;
+                if (flag == "下一页") {
+
+                    if (dangqian == page||k=="hidden") {
+                        alert("已经是最后一页");
+                    }
+                    else {
+
+                        getchanpin(parseInt(dangqian) + 1);
+                    }
+                }
+                else {
+                    if (dangqian == 1) {
+                        alert("已经是第一页");
+                    }
+                    else
+                        getchanpin(dangqian - 1);
+                }
+        }
+
+        function getchanpin(index) {
+
+            var waitim = document.getElementById("wait");
+           // waitim.style.display = "block";
+           // waitim.src = "images/wait.gif";
+            dangqian = index;
+            var xmlhttp;
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            if (threestate == 2) {
+                xmlhttp.open("get", "chanpin/chanpin.aspx?time="+Date.now.toString()+"&index="+index, true);
+
+            }
+            else {
+
+
+                xmlhttp.open("get", "chanpin/searchchanpin.aspx?time="+Date.now.toString()+"&index="+index + "&accord=" + accord + "&flag=" + threestate, true);
+
+            }
+            xmlhttp.send(null);
+            var pk = document.getElementById('mytab').getElementsByTagName('tr');
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                       js= JSON.parse(xmlhttp.responseText);
+                    var body = js.body;
+
+                    var j = 0;
+                    page = js.code;
+                    for (var tt = 0; tt < 9; tt++) {
+                        pk[tt].style.visibility="visible";
+                    }
+
+                    for(var col=1;col<=body.length;col++)
+                    {
+                        var k = pk[col].getElementsByTagName("td");
+                        k[0].innerHTML = unescape(body[col - 1].NONGCHANPING_JIAGE_ID);
+                        k[1].innerHTML = unescape(body[col - 1].ADDRESS);
+                        k[2].innerHTML = unescape(body[col - 1].PINZHONG);
+                        k[3].innerHTML = unescape(body[col - 1].ZUOJIA_SHOUJIA);
+                        k[4].innerHTML = unescape(body[col - 1].DIANSHANG_SHOUJIA);
+                        k[5].innerHTML = unescape(body[col - 1].TONGBI);
+                        k[6].innerHTML = unescape(body[col - 1].HUANBI);
+                        k[7].innerHTML = unescape(body[col - 1].BODONG_STATICS);
+                        k[8].innerHTML = unescape(body[col - 1].ADMIN);
+                    }
+                    //权限管理
+                    if (power == "0") {
+                        xiugai1.style.visibility = "hidden";
+                        xiugai2.style.visibility = "hidden";
+                        xiugai3.style.visibility = "hidden";
+                        xiugai4.style.visibility = "hidden";
+                        xiugai5.style.visibility = "hidden";
+                        xiugai6.style.visibility = "hidden";
+                        xiugai7.style.visibility = "hidden";
+                        xiugai8.style.visibility = "hidden";
+                        shanchu1.style.visibility = "hidden";
+                        shanchu2.style.visibility = "hidden";
+                        shanchu3.style.visibility = "hidden";
+                        shanchu4.style.visibility = "hidden";
+                        shanchu5.style.visibility = "hidden";
+                        shanchu6.style.visibility = "hidden";
+                        shanchu7.style.visibility = "hidden";
+                        shanchu8.style.visibility = "hidden";
+                        addmessage.style.visibility = "hidden";
+                    }
+                    else if (power == "1") {
+                        xiugai1.style.visibility = "hidden";
+                        xiugai2.style.visibility = "hidden";
+                        xiugai3.style.visibility = "hidden";
+                        xiugai4.style.visibility = "hidden";
+                        xiugai5.style.visibility = "hidden";
+                        xiugai6.style.visibility = "hidden";
+                        xiugai7.style.visibility = "hidden";
+                        xiugai8.style.visibility = "hidden";
+                        shanchu1.style.visibility = "hidden";
+                        shanchu2.style.visibility = "hidden";
+                        shanchu3.style.visibility = "hidden";
+                        shanchu4.style.visibility = "hidden";
+                        shanchu5.style.visibility = "hidden";
+                        shanchu6.style.visibility = "hidden";
+                        shanchu7.style.visibility = "hidden";
+                        shanchu8.style.visibility = "hidden";
+                    }
+                    else if (power == "2") {
+                        shanchu1.style.visibility = "hidden";
+                        shanchu2.style.visibility = "hidden";
+                        shanchu3.style.visibility = "hidden";
+                        shanchu4.style.visibility = "hidden";
+                        shanchu5.style.visibility = "hidden";
+                        shanchu6.style.visibility = "hidden";
+                        shanchu7.style.visibility = "hidden";
+                        shanchu8.style.visibility = "hidden";
+                    }
+                    else {
+
+                    }
+                    for (var col = body.length+1; col < 9; col++) {
+                        pk[col].style.visibility = "hidden";
+                    }
+
+                    var pageindex = document.getElementById("pageindex");
+                    waitim.style.display = "none";
+                    pageindex.innerHTML = "";
+                    for(var pagesize=0;pagesize<page;pagesize++)
+                    {
+                        pageindex.innerHTML += "<option value="+(pagesize)+"  onclick=getchanpin(this.innerHTML)>" + (pagesize + 1) + "</option>";
+                    }
+                    pageindex.selectedIndex = dangqian-1;
+                }
+            }
+
+        }
+        //function look(obj) {
+
+        //   location.replace("chanpin/look.aspx?id=" + obj.parentNode.parentNode.getElementsByTagName('td')[0].innerHTML);
+
+        //}
+        function deletedata(obj)
+        {
+            if (confirm("你确定删除吗？")) {
+                var xmlhttp;
+                if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else { // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.open("get", "chanpin/deletechanpin.aspx?id=" + obj.parentNode.parentNode.getElementsByTagName('td')[0].innerHTML, false);
+                xmlhttp.send(null);
+                alert("该条目已删除");
+                location.replace(location.href);
+            }
+            else {
+            }
+
+        }
+        function xianshi()
+        {
+            location.replace(location.href);
+        }
+        function search(s)
+        {
+            threestate = s;
+            if (s == 0) {
+                accord = document.getElementById("itype").value;
+            }
+            else {
+                accord = document.getElementById("ikeywork").value;
+            }
+            dangqian = 1;
+            getchanpin(1);
+
+        }
+
+    </script>
+</head>
+
+<body onload="getchanpin(1)" style=" margin: 0px; height: 100%;">
+    <img style="position :absolute; left:0px;top:-20px; width:100%;height:1000px; display:none;" id="wait" />
+    <div id="chanpinbody">
+        <div class="title">
+
+            <h2>农产品价格</h2>
+
+        </div>
+
+        <div style="position: absolute;right: 40%;">地区检索：<input type="text" id="itype" />&nbsp&nbsp<button onclick="search(0)">检索</button></div>
+
+        <div style="position: absolute;right: 7%;">品种检索：<input type="text" id="ikeywork" />&nbsp&nbsp<button onclick="search(1)">检索</button></div>
+        <br />
+        <br />
+        <button onclick="xianshi()" style="position: absolute; right: 7%; ">显示全部</button>
+        <br />
+        <br />
+        <table width="94%" style="height: 450px; text-align: center;   font-size: 14px;" id="mytab" border="1" class="t1">
+            <thead>
+            <th width="6%">编号</th>
+            <th width="8%">地区</th>
+            <th width="8%">品种</th>
+            <th width="10%">坐家售价</th>
+            <th width="10%">点上售价</th>
+            <th width="7%">同比</th>
+            <th width="7%">环比</th>
+            <th width="14%">波动情况</th>
+            <th width="10%">管理员</th>
+            <th width="20%">修改/删除</th>
+            </thead>
+            <tr class="a1">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a onclick="changediv(this)" href="javascript:; " id="xiugai1">修改</a>
+                    &nbsp;&nbsp;<a onclick="deletedata(this)" href="javascript:;" id="shanchu1">删除</a>
+                    <!--&nbsp;&nbsp;<a onclick="look(this)" href="javascript:;" id="chakan1">查看</a>-->
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a onclick="changediv(this)" href="javascript:; " id="xiugai2">修改</a>
+                    &nbsp;&nbsp;<a onclick="deletedata(this)" href="javascript:;" id="shanchu2">删除</a>
+                    <!--&nbsp;&nbsp;<a onclick="look(this)" href="javascript:;" id="chakan2">查看</a>-->
+                </td>
+            </tr>
+            <tr class="a1">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a onclick="changediv(this)" href="javascript:; " id="xiugai3">修改</a>
+                    &nbsp;&nbsp;<a onclick="deletedata(this)" href="javascript:;" id="shanchu3">删除</a>
+                    <!--&nbsp;&nbsp;<a onclick="look(this)" href="javascript:;" id="chakan3">查看</a>-->
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a onclick="changediv(this)" href="javascript:; " id="xiugai4">修改</a>
+                    &nbsp;&nbsp;<a onclick="deletedata(this)" href="javascript:;" id="shanchu4">删除</a>
+                    <!--&nbsp;&nbsp;<a onclick="look(this)" href="javascript:;" id="chakan4">查看</a>-->
+                </td>
+            </tr>
+            <tr class="a1">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a onclick="changediv(this)" href="javascript:; " id="xiugai5">修改</a>
+                    &nbsp;&nbsp;<a onclick="deletedata(this)" href="javascript:;" id="shanchu5">删除</a>
+                    <!--&nbsp;&nbsp;<a onclick="look(this)" href="javascript:;" id="chakan5">查看</a>-->
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a onclick="changediv(this)" href="javascript:; " id="xiugai6">修改</a>
+                    &nbsp;&nbsp;<a onclick="deletedata(this)" href="javascript:;" id="shanchu6">删除</a>
+                    <!--&nbsp;&nbsp;<a onclick="look(this)" href="javascript:;" id="chakan6">查看</a>-->
+                </td>
+            </tr>
+            <tr class="a1">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a onclick="changediv(this)" href="javascript:; " id="xiugai7">修改</a>
+                    &nbsp;&nbsp;<a onclick="deletedata(this)" href="javascript:;" id="shanchu7">删除</a>
+                    <!--&nbsp;&nbsp;<a onclick="look(this)" href="javascript:;" id="chakan7">查看</a>-->
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a onclick="changediv(this)" href="javascript:; " id="xiugai8">修改</a>
+                    &nbsp;&nbsp;<a onclick="deletedata(this)" href="javascript:;" id="shanchu8">删除</a>
+                    <!--&nbsp;&nbsp;<a onclick="look(this)" href="javascript:;" id="chakan8">查看</a>-->
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <button onclick="updatediv()" style="float:right;position:relative;right:7%;width:80px;" id="addmessage">添加</button>
+    <br />
+    <br />
+    <table>
+
+        <tr>
+            <td>
+                <button onclick="changepage(this.innerHTML)">上一页</button>
+            </td>
+            <td>
+                &nbsp;
+                <select id="pageindex">
+
+                    <option>1</option>
+
+                </select>
+                &nabla;
+
+            </td>
+            <td>
+                <button onclick="changepage(this.innerHTML)">下一页</button>
+            </td>
+        </tr>
+    </table>
+
+    <div class="templatemo-content-container" id="update" style="display: none; height: 100%; position: absolute; top: 0px; left: 0px">
+        <div class="templatemo-content-widget no-padding">
+            <div class="panel panel-default table-responsive">
+
+
+                <table class='tableBorder table table-striped table-bordered templatemo-user-table' align=center>
+                    <img src="./images/close.png" onclick="c()" style="float:right;height:40px;width:40px" />
+
+
+                    <tr>
+                        <th class='tableHeaderText green-bg white-text' colspan=2 height=25>农产品价格</th>
+                    <tr>
+                        <td height=23 colspan="2" class='forumRow'>
+                            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                    </tr>
+                    <tr>
+                        <td height="10">&nbsp;</td>
+                    </tr>
+                </table>
+                </td>
+                </tr>
+                <tr>
+                    <td>地区</td>
+                    <td class='forumRow'>
+                        <div class="form-group">
+                            <input name='a_title' type='text' id='a_title' class="form-control">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class='forumRow' height=23>品种</td>
+                    <td class='forumRow'>
+                        <div class="form-group">
+                            <input type='text' name='a_key' class="form-control" id="a_pinzhong">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class='forumRow' height=23>坐家售价</td>
+                    <td class='forumRow'>
+                        <div class="form-group">
+                            <input type='text' name='a_key' class="form-control" id="a_jiashoujia">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class='forumRow' height=23>点上售价</td>
+                    <td class='forumRow'>
+                        <div class="form-group">
+                            <input type='text' name='a_key1' class="form-control" id="a_dianshoujia">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class='forumRow' height=23>同比</td>
+                    <td class='forumRow'>
+                        <div class="form-group">
+                            <input type='text' name='a_key2' class="form-control" id="a_tongbi">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class='forumRow' height=23>环比</td>
+                    <td class='forumRow'>
+                        <div class="form-group">
+                            <input type='text' name='a_key3' class="form-control" id="a_huanbi">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class='forumRow' height=23>波动情况</td>
+                    <td class='forumRow'>
+                        <div class="form-group">
+                            <input type='text' name='a_key4' class="form-control" id="a_bodong">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class='forumRowHighLight' height=23>管理员</td>
+                    <td class='forumRowHighLight'>
+                        <span class="forumRow">
+                            <div class="form-group">
+                                <input name='a_author' type='text' id='a_author' value="" size='40' class="form-control" readonly="true">
+                            </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="50" colspan=2 class='forumRow'>
+                        <div align="center">
+                            <div class="form-group">
+                                <button class="templatemo-blue-button" onclick="tijiao()">提交</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+            </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,375 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!--这里是专家观点部分的网页 -->
+    <style>
+        li {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>吉林省农产品市场监测预警平台</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="/css/HituxCMSBigRed/common.css" rel="stylesheet" type="text/css" />
+    <link href="../css/HituxCMSBigRed/inner (1).css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/js/functions.js"></script>
+    <script type="text/javascript" src="/images/iepng/iepngfix_tilebg.js"></script>
+    <script type="text/javascript">
+        window.onerror = function () { return true; }
+    </script>
+    <script>
+        //pagelabel 用于换页
+        var pagelabel = 1;//这里是一个标记，1代表处于无方向状态，2代表关于动物的换页，3代表处于植物页，4代表处于微生物页
+        var dangqian = 1;
+        var page = 1;
+        var fangxiang = null;
+        function changepage(flag) {
+            if (flag == "下一页") {
+                if (dangqian == page) {
+                    alert("已经是最后一页");
+                }
+                else {
+                    //get(parseInt(dangqian) + 1);
+                    switch (pagelabel) {
+                        case 1:
+                            get(parseInt(dangqian) + 1);
+                            break;
+                        case 2:
+                            getguandian(fangxiang, parseInt(dangqian) + 1);
+                            break;
+                        case 3:
+                            getguandian(fangxiang, parseInt(dangqian) + 1);
+                            break;
+                        default:
+                            getguandian(fangxiang, parseInt(dangqian) + 1);
+                            break;
+                    }
+                }
+            }
+            else {
+                if (dangqian == 1) {
+                    alert("已经是第一页");
+                }
+                else {
+                    // get(parseInt(dangqian) - 1);
+                    switch (pagelabel) {
+                        case 1:
+                            get(parseInt(dangqian) - 1);
+                            break;
+                        case 2:
+                            getguandian(fangxiang, parseInt(dangqian) - 1);
+
+                            break;
+                        case 3:
+                            getguandian(fangxiang, parseInt(dangqian) - 1);
+                            break;
+                        default:
+                            getguandian(fangxiang, parseInt(dangqian) - 1);
+                            break;
+                    }
+                }
+            }
+        }
+        function get(index) {
+            pagelabel = 1;
+            dangqian = index;
+            var xmlhttp;
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.open("get", "../../Sever/ZHUANJIA/select.aspx?time=" + Date.now.toString() + "&index=" + index, true);
+            xmlhttp.send(null);
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {//检查服务是否有返回
+                    js = JSON.parse(xmlhttp.responseText);//获取返回内容并把其转换为JSON格式
+
+
+                    var body = js.body;
+                    var j = 0;
+                    var message = document.getElementsByClassName("aa");
+                    var tim = document.getElementsByClassName("riqi");
+                    var message2 = document.getElementsByClassName("kkk");//左下角页面显示
+
+                    for (var col = 1; col <= body.length; col++) {
+                        //显示题目
+                        tim[col - 1].style.visibility = "visible";
+                        message[col - 1].style.visibility = "visible";
+                        message[col - 1].innerHTML = "<font color=\"#090\">•</font>&nbsp;" + unescape(body[col - 1].ZJGD_TIMU);
+                        var s = body[col - 1].ZJGD_SHIJIAN;
+                        tim[col - 1].innerHTML = unescape(s.substr(0, 10));
+                        if (body[col - 1].ZJGD_BIAOJI == 1) {
+                            message2[col - 1].style.visibility = "visible";
+                            message2[col - 1].innerHTML = "<font color=\"#090\">•</font>&nbsp;" + unescape(body[col - 1].ZJGD_TIMU);
+                        }
+                    }
+
+                    for (var col = body.length + 1; col < 9; col++) {
+                        message[col - 1].style.visibility = "hidden";
+                        tim[col - 1].style.visibility = "hidden";
+                    }
+                    for (var col = body.length + 1; col < 15; col++) {
+                        message2[col - 1].style.visibility = "hidden";
+
+                    }
+                    
+                    /////待修改
+                    page = js.code;
+                    var pageindex = document.getElementById("pageindex");
+                    pageindex.innerHTML = "";
+                    for (var pagesize = 0; pagesize < page; pagesize++) {
+                        pageindex.innerHTML += "<option value=" + (pagesize) + "  onclick=get(this.innerHTML)>" + (pagesize + 1) + "</option>";
+                    }
+                    pageindex.selectedIndex = dangqian - 1;
+                }
+            }
+
+
+        
+        }
+        function gettitle(title) {
+            var real = title.split(";");//将title分为数组的两个部分，real[0]和real[1]
+            location.href = '/html/endlink.html?title=' + real[1] + ';ZHUANJIA';
+        }
+        function getguandian(fang, i) {
+
+            if (fang == "动物") {
+                pagelabel = 2;
+            }
+            else if (fang == "植物") {
+                pagelabel = 3;
+            }
+            else {
+                pagelabel = 4;//微生物
+            }
+
+            fangxiang = fang;//获得当前的专家方向
+            dangqian = i;
+            index = i;
+
+            var xmlhttp;
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.open("get", "../../Sever/ZHUANJIA/selectfortype.aspx?time=" + Date.now.toString() + "&index=" + index + "&fangxiang=" + fangxiang, true);
+            xmlhttp.send(null);
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {     //检查服务是否有返回
+
+                    js = JSON.parse(xmlhttp.responseText);//获取返回内容并把其转换为JSON格式
+
+                    var body = js.body;
+                    var j = 0;
+                    var message = document.getElementsByClassName("aa");
+                    var tim = document.getElementsByClassName("riqi");
+
+                    for (var col = 1; col <= body.length; col++) {
+                        //显示题目
+                        tim[col - 1].style.visibility = "visible";
+                        message[col - 1].style.visibility = "visible";
+                        message[col - 1].innerHTML = "<font color=\"#090\">•</font>&nbsp;" + unescape(body[col - 1].ZJGD_TIMU);
+                        //用来显示时间问题
+                        var s = body[col - 1].ZJGD_SHIJIAN;
+                        tim[col - 1].innerHTML = unescape(s.substr(0, 9));//只显示当前的日期，不显示具体的时间
+                    }
+                    for (var col = body.length + 1; col < 9; col++) {
+                        message[col - 1].style.visibility = "hidden";
+                        tim[col - 1].style.visibility = "hidden";
+                    }
+
+                    /////待修改
+                    page = js.code;
+                    var pageindex = document.getElementById("pageindex");
+                    pageindex.innerHTML = "";
+                    for (var pagesize = 0; pagesize < page; pagesize++) {
+                        pageindex.innerHTML += "<option value=" + (pagesize) + "  onclick=getuser(this.innerHTML)>" + (pagesize + 1) + "</option>";
+                    }
+                    pageindex.selectedIndex = dangqian - 1;
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body onload="get(1)">
+    <div id="wrapper">
+
+        <!--head start-->
+        <div id="head">
+
+            <!--top start -->
+            <div class="top">
+                <div class="clearfix"></div>
+                <div class="TopLogo">
+                    <div class="logo"><a href="/"><img src="/images/up_images/logo.png" /></a></div>
+                </div>
+
+            </div>
+            <!--top end-->
+            <!--nav start-->
+            <div id="NavLink">
+                <div class="NavBG">
+                    <!--Head Menu Start-->
+                    <ul id='sddm'>
+                        <li class='CurrentLi'><a href='/'>网站首页</a></li>
+                        <li><a href='/About/' onmouseover="mopen('m2')" onmouseout='mclosetime()'>综合资讯</a></li>
+                        <li>
+                            <a href='/about1/' onmouseover="mopen('m2')" onmouseout='mclosetime()'>粮食专栏</a>
+                        </li>
+                        <li>
+                            <a href='/Honor/' onmouseover="mopen('m3')" onmouseout='mclosetime()'>蔬菜专栏</a>
+                        </li>
+                        <li>
+                            <a href='/Product/' onmouseover="mopen('m4')" onmouseout='mclosetime()'>农资专栏</a>
+                        </li>
+                        <li><a href='/news/' onmouseover="mopen('m5')" onmouseout='mclosetime()'>专家观点</a></li>
+                        <li><a href='/Case/' onmouseover="mopen('m6')" onmouseout='mclosetime()'>数据管理</a> </li>
+                        <li><a href='/Recruit' onmouseover="mopen('m7')" onmouseout='mclosetime()'>分析预警</a></li>
+                        <li><a href='/Monitor' onmouseover="mopen('m8')" onmouseout='mclosetime()'>监测报告</a></li>
+                    </ul>
+                    <!--Head Menu End-->
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!--nav end-->
+
+        </div>
+        <!--head end-->
+        <!--body start-->
+        <div id="body">
+            <!--focus start-->
+            <div id="InnerBanner">
+                <script src='/ADs/112.js' type='text/javascript'></script>
+            </div>
+            <!--foncus end-->
+            <div class="HeightTab clearfix"></div>
+            <!--inner start -->
+            <div class="inner">
+                <!--left start-->
+                <div class="left">
+                    <div class="Sbox">
+                        <div class="topic">专家观点方向</div>
+                        <div class="blank" style="height:70px">
+                            <ul>
+                                <li><a onclick="getguandian(this.innerHTML, 1)">动物</a></li>
+                                <li><a onclick="getguandian(this.innerHTML, 1)">植物</a></li>
+                                <li><a onclick="getguandian(this.innerHTML, 1)">微生物</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="HeightTab clearfix"></div>
+                    <div class="Sbox">
+                        <div class="topic">专家咨询</div>
+                        <div class="list" style="height:100px; overflow:auto">
+                            <dl>
+                                <dd><a onclick="gettitle(this.innerHTML)" class="kkk"></a></dd>
+                                <dd><a onclick="gettitle(this.innerHTML)" class="kkk"></a></dd>
+                                <dd> <a onclick="gettitle(this.innerHTML)" class="kkk"></a> </dd>
+                                <dd> <a onclick="gettitle(this.innerHTML)" class="kkk"></a></dd>
+                                <dd> <a onclick="gettitle(this.innerHTML)" class="kkk"></a></dd>
+                                <dd><a onclick="gettitle(this.innerHTML)" class="kkk"></a></dd>
+                                <dd><a onclick="gettitle(this.innerHTML)" class="kkk"></a></dd>
+                                <dd> <a onclick="gettitle(this.innerHTML)" class="kkk"></a> </dd>
+                                <dd> <a onclick="gettitle(this.innerHTML)" class="kkk"></a></dd>
+                                <dd> <a onclick="gettitle(this.innerHTML)" class="kkk"></a></dd>
+                                <dd><a onclick="gettitle(this.innerHTML)" class="kkk"></a></dd>
+                                <dd><a onclick="gettitle(this.innerHTML)" class="kkk"></a></dd>
+                                <dd> <a onclick="gettitle(this.innerHTML)" class="kkk"></a> </dd>
+                                <dd> <a onclick="gettitle(this.innerHTML)" class="kkk"></a></dd>
+                                <dd> <a onclick="gettitle(this.innerHTML)" class="kkk"></a></dd>
+                            </dl>
+                        </div>
+
+                    </div>
+                </div>
+                <!--left end-->
+                <!--right start-->
+                <div class="right">
+                    <div class="Position"><span>你的位置：<a href="/">首页</a> > <a href='#'>专家观点</a></span></div>
+                    <!--main start-->
+                    <div class="main">
+
+                        <div class="ArticleList">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <ul>
+                                    <tr>
+                                        <div class='DivList2'>
+                                            <div class='DivLi'><a onclick="gettitle(this.innerHTML)" class="aa"><font color="#090">•</font>&nbsp;</a><span class="riqi" style="float:right;padding-right:0px;color:#C00"></span></div>
+                                            <div class='DivLi'><a onclick="gettitle(this.innerHTML)" class="aa"><font color="#090">•</font>&nbsp;</a><span class="riqi" style="float:right;padding-right:0px;color:#C00"></span></div>
+                                            <div class='DivLi'><a onclick="gettitle(this.innerHTML)" class="aa"><font color="#090">•</font>&nbsp;</a><span class="riqi" style="float:right;padding-right:0px;color:#C00"></span></div>
+                                            <div class='DivLi'><a onclick="gettitle(this.innerHTML)" class="aa"><font color="#090">•</font>&nbsp;</a><span class="riqi" style="float:right;padding-right:0px;color:#C00"></span></div>
+                                            <div class='DivLi'><a onclick="gettitle(this.innerHTML)" class="aa"><font color="#090">•</font>&nbsp;</a><span class="riqi" style="float:right;padding-right:0px;color:#C00"></span></div>
+                                            <div class='DivLi'><a onclick="gettitle(this.innerHTML)" class="aa"><font color="#090">•</font>&nbsp:</a><span class="riqi" style="float:right;padding-right:0px;color:#C00"></span></div>
+                                            <div class='DivLi'><a onclick="gettitle(this.innerHTML)" class="aa"><font color="#090">•</font>&nbsp;</a><span class="riqi" style="float:right;padding-right:0px;color:#C00"></span></div>
+                                            <div class='DivLi'><a onclick="gettitle(this.innerHTML)" class="aa"><font color="#090">•</font>&nbsp;</a><span class="riqi" style="float:right;padding-right:0px;color:#C00"></span></div>
+                                        </div>
+                                    </tr>
+
+                                </ul>
+                            </table>
+
+
+                        </div>
+
+                    </div>
+                    <!--main end-->
+                </div>
+                <!--right end-->
+                <!--end pageturn-->
+                <div style="text-align:center">
+                    <table style="position:relative; top:20px; margin:auto">
+                        <tr>
+                            <td>
+                                <a onclick="changepage(this.innerHTML)">上一页</a>
+                            </td>
+                            <td>
+                                &nbsp;
+                                <select id="pageindex">
+                                    <option>1</option>
+                                </select>
+                                &nabla;
+                            </td>
+                            <td>
+                                <a onclick="changepage(this.innerHTML)">下一页</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--end pageturn-->
+            </div>
+            <!--inner end-->
+        </div>
+        <!--body end-->
+        <div class="HeightTab clearfix"></div>
+        <!--footer start-->
+        <div id="footer">
+            <div class="inner">
+                <div class='BottomNav'>
+                    <a href="/">网站首页</a><br />
+                    吉林省农村经济信息中心 联系电话：0431-85386281 电子邮件：admin@jl.gov.cn
+                </div>
+
+            </div>
+        </div>
+        <!--footer end -->
+
+
+    </div>
+    <script type="text/javascript" src="/js/ServiceCenter.js"></script>
+
+</body>
+</html>
+<!--
+Powered By HituxCMS ASP V2.1
+-->

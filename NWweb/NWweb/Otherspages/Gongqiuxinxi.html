@@ -1,0 +1,442 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!--这里是专家观点部分的网页 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>吉林省农产品市场监测预警平台</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="/css/HituxCMSBigRed/common.css" rel="stylesheet" type="text/css" />
+    <link href="../css/HituxCMSBigRed/inner (1).css" rel="stylesheet" type="text/css" />
+    <!--<script type="text/javascript" src="ckeditor/ckeditor.js"></script>-->
+    <script type="text/javascript" src="/js/functions.js"></script>
+    <script type="text/javascript" src="/images/iepng/iepngfix_tilebg.js"></script>
+    <!-- 这句就能保证js代码不会出错 -->
+    <script type="text/javascript">
+        window.onerror = function () { return true; }
+    </script>
+    <!-- 帮助显示我要发布的界面，本应该写在css文件中的 -->
+    <style type="text/css">
+        
+        td {
+            line-height: 40px;
+        }
+    </style>
+  
+    <script>
+        function onblurs1(input) {  
+            if (!input.value.replace(/^(\s|u00A0)+|(\s|\u00A0)+$/g, "")) {//判断是否为空
+                var tip1 = document.getElementById("tip1");
+                tip1.innerHTML = "请检查您的输入";
+            }
+        }
+        function onblurs2(input) {
+            if (!input.value.replace(/^(\s|u00A0)+|(\s|\u00A0)+$/g, "")) {//判断是否为空
+                var tip2 = document.getElementById("tip2");
+                tip2.innerHTML = "请检查您的输入";
+            }
+        }
+        function onblurs3(input) {
+            if (!input.value.replace(/^(\s|u00A0)+|(\s|\u00A0)+$/g, "")) {//判断是否为空
+                var tip3 = document.getElementById("tip3");
+                tip3.innerHTML = "请检查您的输入";
+            }
+        }
+        //检查11位的号码
+        function onblurs4(input) {
+            var mobile_number = input.value;
+            var mobile_rule = /^1[358]\d{9}$/;
+            var tip4 = document.getElementById("tip4");
+            if (mobile_number.match(mobile_rule) == null) {
+                tip4.innerHTML = "请输入11位正确的手机号码！";
+                return false;
+            } else {
+                tip4.innerHTML = "";
+            }
+         }
+        function onfocus1(input) {         
+                var tip1 = document.getElementById("tip1");
+                tip1.innerHTML = "";         
+        }
+        function onfocus2(input) {
+            var tip2 = document.getElementById("tip2");
+            tip2.innerHTML = "";
+        }
+        function onfocus3(input) {
+            var tip3 = document.getElementById("tip3");
+            tip3.innerHTML = "";
+        }
+        function onfocus4(input) {
+            var tip4 = document.getElementById("tip4");
+            tip4.innerHTML = "";
+        }
+        function queren() {
+            var tip1 = document.getElementById("tip1").value; 
+            var tip2 = document.getElementById("tip2").value;
+            var tip3 = document.getElementById("tip3").value;
+            var tip4 = document.getElementById("tip4").value;
+            if (tip1 == null || tip2 == null || tip3 == null || tip4 == null) {
+                alert("请检查您的输入");
+            }         
+           else{
+                 tijiao();
+            } 
+        }
+
+       
+    </script>
+
+    <script>
+        var reali = window.location.search;
+        var strarr = reali.split('=');              
+        var pagelabel = strarr[1];//该值为1，代表为供求信息页面，为2，代表我要发布供求信息；//pagelabel 用于换页       
+        var dangqian = 1;
+        var page = 1;
+        //changepage函数是用于信息翻页，之作用于供求信息页面
+        //在我要发布页面，不应该显示
+        function changepage(flag) {
+            if (flag == "下一页") {
+                if (dangqian == page) {
+                    alert("已经是最后一页");
+                }
+                else {
+                    get(parseInt(dangqian) + 1);              
+                }
+            }
+            else {
+                if (dangqian == 1) {
+                    alert("已经是第一页");
+                }
+                else {
+                  get(parseInt(dangqian) - 1);                
+                }
+            }
+        }
+        //该页面含有两个小页，pagelabel决定打开哪个小页
+        function getpage(pagelabel)
+        {
+            if (pagelabel == 1)
+            {
+                document.getElementById("message").style.display = "none";
+                document.getElementById("gongqiu").style.display = "inline"
+                document.getElementById("changepages").style.display = "inline";             
+                get(1);
+            }               
+            else
+            {
+                alert("此模块正在开发中");
+                //document.getElementById("tip1").innerHTML = '';
+                //document.getElementById("tip2").innerHTML = '';
+                //document.getElementById("tip3").innerHTML = '';
+                //document.getElementById("tip4").innerHTML = '';
+                //document.getElementById("biaoti").value = '';
+                //document.getElementById("textarea").value = '';
+                //document.getElementById("xingming").value = '';
+                //document.getElementById("dianhua").value = '';
+                //document.getElementById("message").style.display = "inline";
+                //document.getElementById("gongqiu").style.display = "none";            
+                //document.getElementById("changepages").style.display = "none";
+            }               
+        }
+        function get(index) {
+            dangqian = index;
+            var xmlhttp;
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.open("get", "../../Sever/GONGQIU/select.aspx?time=" + Date.now.toString() + "&index=" + index, true);
+            xmlhttp.send(null);
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {//检查服务是否有返回
+                    js = JSON.parse(xmlhttp.responseText);//获取返回内容并把其转换为JSON格式
+                    var body = js.body;
+                    var title = document.getElementsByClassName("gongqiuaa");
+                    var tim = document.getElementsByClassName("riqi");
+                    for (var col = 0; col < body.length; col++) {
+                        tim[col].style.visibility = "visible";
+                        title[col].style.visibility = "visible";
+                        var type = "";
+                        if (body[col].GONGQIU_XINXI_LEIXING == "0") {
+                            type = "提供";
+                        }
+                        else {
+                            type = "需求";
+                        }
+                        title[col].innerHTML = "<font color=\"#090\">•</font>&nbsp;" + type + ":" + unescape(body[col].GONGQIU_XINXI_SHANGPIN);
+                        var s = body[col].TIME;
+                        tim[col].innerHTML = unescape(s.substr(0, 10));
+                    }
+                    for (var co = body.length + 1; co < 9; co++) {
+                        title[co - 1].style.visibility = "hidden";
+                        tim[co - 1].style.visibility = "hidden";
+                    }
+                    //待修改;
+                    page = js.code;
+                    var pageindex = document.getElementById("pageindex");
+                    pageindex.innerHTML = "";
+                    for (var pagesize = 0; pagesize < page; pagesize++) {
+                        pageindex.innerHTML += "<option value=" + (pagesize) + "  onclick=get(this.innerHTML)>" + (pagesize + 1) + "</option>";
+                    }
+                    pageindex.selectedIndex = dangqian - 1;
+                }
+            }
+        }
+        function gettitle(title) {
+            var real = title.split(";");
+            til = real[1].split(":");
+            location.href = '/html/XINJIAN1.html?title=' + til[1];
+        }
+        function tijiao() {
+            var type = document.getElementById("kind").value; 
+            var title = document.getElementById("biaoti").value;   
+            var content = document.getElementById("textarea").value;          
+            var yonghu = document.getElementById("xingming").value;          
+            var dianhua = document.getElementById("dianhua").value;
+            
+            //先进行判断是否存在未输入项
+            //再判断电话号码是否为空
+           
+            var FileController = "./Sever/GONGQIU/additems.aspx";                    // 接收上传文件的后台地址
+            var form = new FormData();
+            form.append("type", type);
+            form.append("title", title);// 可以增加表单数据 
+            form.append("content", content);
+            form.append("xingming", yonghu);
+            form.append("dianhua", dianhua);
+            // XMLHttpRequest 对象
+           
+            var xhr = new XMLHttpRequest();
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xhr = new XMLHttpRequest();
+            }
+            else { // code for IE6, IE5
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhr.open("post", FileController, true);
+            xhr.onload = function () {
+                alert("提交成功!");
+                location.replace(location.href);
+            };
+            xhr.send(form);
+        }
+    </script>
+</head>
+<body onload="getpage(pagelabel)">
+    <div id="wrapper">       
+        <!--head start-->
+        <div id="head">
+            <!--top start -->
+            <div class="top">
+                <div class="clearfix"></div>
+                <div class="TopLogo">
+                    <div class="logo"><a href="/"><img src="/images/up_images/logo.png" /></a></div>
+                </div>
+            </div>
+            <!--top end-->
+            <!--nav start-->
+            <div id="NavLink">
+                <div class="NavBG">
+                    <!--Head Menu Start-->
+                    <ul id='sddm'>
+                        <li class='CurrentLi'>
+                            <a href='/'>网站首页</a>
+                        </li>
+                        <li>
+                             <a href='/About/' onmouseover="mopen('m2')" onmouseout='mclosetime()'>综合资讯</a>
+                        </li>
+                        <li>
+                            <a href='/about1/' onmouseover="mopen('m2')" onmouseout='mclosetime()'>粮食专栏</a>
+                        </li>
+                        <li>
+                            <a href='/Honor/' onmouseover="mopen('m3')" onmouseout='mclosetime()'>蔬菜专栏</a>
+                        </li>
+                        <li>
+                            <a href='/Product/' onmouseover="mopen('m4')" onmouseout='mclosetime()'>农资专栏</a>
+                        </li>
+                        <li>
+                            <a href='/news/' onmouseover="mopen('m5')" onmouseout='mclosetime()'>专家观点</a>
+                        </li>
+                        <li>
+                            <a href='/Case/' onmouseover="mopen('m6')" onmouseout='mclosetime()'>数据管理</a> 
+                        </li>
+                        <li>
+                            <a href='/Recruit' onmouseover="mopen('m7')" onmouseout='mclosetime()'>分析预警</a>
+                        </li>
+                        <li>
+                            <a href='/Monitor' onmouseover="mopen('m8')" onmouseout='mclosetime()'>监测报告</a>
+                        </li>
+                    </ul>
+                    <!--Head Menu End-->
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!--nav end-->
+        </div>
+        <!--head end-->
+        <!--body start-->
+        <div id="body">
+            <!--focus start-->
+            <div id="InnerBanner">
+                <script src='/ADs/112.js' type='text/javascript'></script>
+            </div>
+            <!--foncus end-->
+            <div class="HeightTab clearfix"></div>
+            <!--inner start -->
+            <div class="inner">
+                <!--left start-->
+                <div class="left">
+                    <div class="Sbox">
+                        <div class="topic">供求专栏</div>
+                        <div class="blank" style="height:70px">
+                            <ul>
+                                <li onclick="getpage(1)">
+                                    <a>供求信息</a>
+                                </li>   
+                                <li onclick="getpage(2)">
+                                    <a>我要发布</a> 
+                                </li>                         
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="HeightTab clearfix"></div>               
+                </div>
+                
+                <!--left end-->
+                <!--right start-->
+                <div class="right">
+                    <div class="Position"><span>你的位置：<a href="/">首页</a> > <a href='#'>供求专区</a></span></div>
+                    <!--main start-->
+                    <div class="main1" id="gongqiu">
+                        <div class="ArticleList">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <ul>
+                                    <tr>
+                                        <div class='DivList2'>
+                                            <div class='DivLi11'><a onclick="gettitle(this.innerHTML)" class="gongqiuaa"><font color="#090">•</font>&nbsp;</a><span class="riqi" style="float:right;padding-right:30px;color:#C00"></span></div>
+                                            <div class='DivLi11'><a onclick="gettitle(this.innerHTML)" class="gongqiuaa"><font color="#090">•</font>&nbsp;</a><span class="riqi" style="float:right;padding-right:30px;color:#C00"></span></div>
+                                            <div class='DivLi11'><a onclick="gettitle(this.innerHTML)" class="gongqiuaa"><font color="#090">•</font>&nbsp;</a><span class="riqi" style="float:right;padding-right:30px;color:#C00"></span></div>
+                                            <div class='DivLi11'><a onclick="gettitle(this.innerHTML)" class="gongqiuaa"><font color="#090">•</font>&nbsp;</a><span class="riqi" style="float:right;padding-right:30px;color:#C00"></span></div>
+                                            <div class='DivLi11'><a onclick="gettitle(this.innerHTML)" class="gongqiuaa"><font color="#090">•</font>&nbsp;</a><span class="riqi" style="float:right;padding-right:30px;color:#C00"></span></div>
+                                            <div class='DivLi11'><a onclick="gettitle(this.innerHTML)" class="gongqiuaa"><font color="#090">•</font>&nbsp:</a><span class="riqi" style="float:right;padding-right:30px;color:#C00"></span></div>
+                                            <div class='DivLi11'><a onclick="gettitle(this.innerHTML)" class="gongqiuaa"><font color="#090">•</font>&nbsp;</a><span class="riqi" style="float:right;padding-right:30px;color:#C00"></span></div>
+                                            <div class='DivLi11'><a onclick="gettitle(this.innerHTML)" class="gongqiuaa"><font color="#090">•</font>&nbsp;</a><span class="riqi" style="float:right;padding-right:30px;color:#C00"></span></div>
+                                        </div>
+                                    </tr>
+                                </ul>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="main2" id="message">
+                        <div class="ArticleList">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="DivList2"  >                               
+                                    <tr>
+                                        <td>
+                                            请选择信息的类型
+                                        </td>
+                                        <td>
+                                            <form>
+                                                <select id="kind">
+                                                    <option value="1">求购</option>
+                                                    <option value="0">出售</option>
+                                                </select>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <tr>
+                                    <td>
+                                        请添加物品名称
+                                    </td>
+                                    <td>
+                                        <input type="text" id="biaoti" name="biaoji" onfocus="onfocus1()" onblur="onblurs1(this)" />
+                                        <span id="tip1"></span>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td>
+                                            请添加详细的信息
+                                        </td>
+                                        <td>
+                                            <textarea maxlength="300" id="textarea" onfocus="onfocus2()"  onchange="this.value=this.value.substring(0, 300)" onkeydown="this.value=this.value.substring(0, 300)" onkeyup="this.value=this.value.substring(0, 300)" name="xiangxi" rows="3" cols="50" onblur="onblurs2(this)"> </textarea>
+                                            <span id="tip2"></span>
+                                        </td>
+                                    </tr>                         
+                                    <tr>
+                                        <td>
+                                            姓名
+                                        </td>
+                                        <td>
+                                            <input type="text" id="xingming" name="name" onfocus="onfocus3()" onblur="onblurs3(this)"/>
+                                            <span id="tip3"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            联系电话
+                                        </td>
+                                        <td>                                       
+                                                <input type="text" id="dianhua" name="tel" onfocus="onfocus4()" onblur="onblurs4(this)" />
+                                                <span id="tip4"></span>
+                                        </td>
+                                    </tr>
+                                    <tr style="position:relative; left:60%;">
+                                        <td>
+                                            <input type="button" onclick="queren()" value="确认提交" />
+                                        </td>
+                                        <td>
+                                            <input type="button" onclick="getpage(2)" value="重置信息" />
+                                        </td>
+                                    </tr>                               
+                            </table>
+                        </div>
+                        </div>
+                    </div>
+                    <!--main end-->
+                </div>
+                <!--right end-->
+                <!--end pageturn-->
+                <div style="text-align:center" id="changepages">
+                    <table style="position:relative; top:20px; margin:auto">
+                        <tr>
+                            <td>
+                                <a onclick="changepage(this.innerHTML)">上一页</a>
+                            </td>
+                            <td>
+                                &nbsp;
+                                <select id="pageindex">
+                                    <option>1</option>
+                                </select>
+                                &nabla;
+                            </td>
+                            <td>
+                                <a onclick="changepage(this.innerHTML)">下一页</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--end pageturn-->
+            </div>
+            <!--inner end-->
+        </div>
+        <!--body end-->
+        <div class="HeightTab clearfix"></div>
+        <!--footer start-->
+        <div id="footer">
+            <div class="inner">
+                <div class='BottomNav'>
+                    <a href="/">网站首页</a><br />
+                    吉林省农村经济信息中心 联系电话：0431-85386281 电子邮件：admin@jl.gov.cn
+                </div>
+            </div>
+        </div>
+        <!--footer end -->
+    </div>
+    <script type="text/javascript" src="/js/ServiceCenter.js"></script>
+</body>
+</html>
+<!--
+Powered By HituxCMS ASP V2.1
+-->
+

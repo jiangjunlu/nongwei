@@ -1,0 +1,7 @@
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\bin\NWweb.dll.config
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\bin\NWweb.dll
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\bin\NWweb.pdb
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\bin\Oracle.DataAccess.dll
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\x86\Debug\NWweb.dll
+C:\Users\dmc\Documents\Visual Studio 2015\Projects\NWweb\NWweb\obj\x86\Debug\NWweb.pdb

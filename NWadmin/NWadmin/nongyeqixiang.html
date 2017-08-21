@@ -1,0 +1,634 @@
+﻿<html>
+<head>
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/templatemo-style.css" rel="stylesheet">
+    <link href="css/mode.css" rel="stylesheet" />
+    <script src="Scripts/json2.js"></script>
+ 
+    <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+    <script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
+    <script>
+        var power = getCookie("type");
+        var qixiangid;//储存id
+        var dangqian = 1;//猜测应该是标志位，哪一个页面在最上面
+        var page = 1;
+        var threestate = 2;
+        var accord = null;
+        var inorup;//0表示弹出框时插入，1表示弹出框时修改
+        function getCookie(name) {
+
+            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+
+
+            if (arr = document.cookie.match(reg))
+                return unescape(arr[2]);
+            else
+                return null;
+        }
+        function c() {
+            var updatediv = document.getElementById("update");
+            updatediv.style.display = "none";
+            parent.document.documentElement.scrollTop = parent.document.body.scrollTop = 0;
+            document.getElementById("qixiangbody").style.opacity = 1;
+            document.getElementById("qixiangbody").style.filter = "alpha(opacity = 100)";
+            document.getElementById("qixiangbody").style.backgroundColor = "#fff";
+        }
+        //修改
+        function changediv(obj) {
+            inorup = 1;
+            var updatediv = document.getElementById("update");
+            updatediv.style.display = "block";
+           
+            parent.document.documentElement.scrollTop = parent.document.body.scrollTop = 0; //滚动条
+
+            document.getElementById("qixiangbody").style.opacity = 0.1;
+            document.getElementById("qixiangbody").style.filter = "alpha(opacity = 30)";
+            document.getElementById("qixiangbody").style.backgroundColor = "#383838";//虚化背景
+
+            var xmlhttp;
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            qixiangid = obj.parentNode.parentNode.getElementsByTagName('td')[0].innerHTML;
+            xmlhttp.open("get", "qixiang/selectforchangeqixiang.aspx?id=" + qixiangid + "&time=" + Date.now.toString(), false);
+            xmlhttp.send(null);
+            var js = JSON.parse(xmlhttp.responseText);
+            var body = js.body;
+
+            //标题 内容 发布日期，有效期，开始日期       
+            document.getElementById("a_title").value = unescape(body[0].NYQX_BIAOTI);
+            document.getElementById("a_kaishiriqi").value = unescape(body[0].NYQX_KAISHIRIQI);
+            document.getElementById("a_youxiaoqi").value = unescape(body[0].NYQX_YOUXIAOQI_DAY);
+            CKEDITOR.instances.a_content.setData(unescape(body[0].NEIRONG));
+        }
+        function change() {
+            var title = document.getElementById("a_title").value;
+            //var type = document.getElementById("cid").value;
+            var kaishiriqi = document.getElementById("a_kaishiriqi").value;
+            var youxiaoqi = document.getElementById("a_youxiaoqi").value;
+            var content = escape(CKEDITOR.instances.a_content.getData());
+            
+            kaishi = kaishiriqi.toString();
+      
+                
+            //var fileObj = document.getElementById("file").files[0];
+            var FileController = "qixiang/change.aspx";                    // 接收上传文件的后台地址
+            var form = new FormData();
+
+            form.append("qixiangid", qixiangid);
+            form.append("title", title);
+            form.append("kaishiriqi", kaishi);
+            //form.append("type", type);
+            form.append("youxiaoqi", youxiaoqi);// 可以增加表单数据 
+            form.append("content", content);           
+            // form.append("file", fileObj);
+            //form.append("oldpath", document.getElementById("file").value);// 文件对象
+
+            // XMLHttpRequest 对象
+
+            var xhr = new XMLHttpRequest();
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xhr = new XMLHttpRequest();
+            }
+            else { // code for IE6, IE5
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhr.open("post", FileController, true);
+
+
+            xhr.onload = function () {
+
+                alert("提交成功!");
+                location.replace(location.href);
+
+            };
+            xhr.send(form);
+        }
+        function tianjia() {
+
+            
+            var title = document.getElementById("a_title").value;  
+            var kaishiriqi = document.getElementById("a_kaishiriqi").value;
+            var youxiaoqi = document.getElementById("a_youxiaoqi").value;
+            var content = escape(CKEDITOR.instances.a_content.getData());            
+            kaishi = kaishiriqi.toString();//开始日期不知道格式，有必要转换为string类型   
+     
+            var FileController = "qixiang/insertqixiang.aspx";                    // 接收上传文件的后台地址
+           
+
+
+            var form = new FormData();
+            form.append("title", title);// 可以增加表单数据                
+            form.append("kaishiriqi", kaishi);
+            form.append("youxiaoqi", youxiaoqi);
+            form.append("content", content);
+            
+            //form.append("file", fileObj);                           // 文件对象
+            // XMLHttpRequest 对象
+
+            var xhr = new XMLHttpRequest();
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xhr = new XMLHttpRequest();
+            }
+            else { // code for IE6, IE5
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            
+            xhr.open("post", FileController, true);
+           
+            xhr.onload = function () {
+                alert("提交成功!");
+                location.replace(location.href);
+            };
+            xhr.send(form);
+        }
+        function tijiao() {
+            if (inorup == 0) {
+
+                tianjia();
+            }
+            else {
+                change();
+            }
+        }
+        //更新里面的内容
+        function updatediv() {
+           
+            document.getElementById("a_title").value = "";
+            document.getElementById("a_kaishiriqi").value = "";
+            document.getElementById("a_youxiaoqi").value = "";
+            CKEDITOR.instances.a_content.setData("");
+
+            inorup = 0;
+
+            var updatediv = document.getElementById("update");
+
+            updatediv.style.display = "block";
+
+            parent.document.documentElement.scrollTop = parent.document.body.scrollTop = 0;
+
+            document.getElementById("qixiangbody").style.opacity = 0.1;
+            document.getElementById("qixiangbody").style.filter = "alpha(opacity = 30)";
+            document.getElementById("qixiangbody").style.backgroundColor = "#383838";
+        }
+        //不太清楚
+        function ApplyStyle(s)
+        {
+            document.getElementById("mytab").className = s.innerText;
+        }
+        //修改页面的表吗时使用
+        function changepage(flag) {
+            var pk = document.getElementById('mytab').getElementsByTagName('tr');
+            var k = pk[8].style.visibility;
+
+            if (flag == "下一页") {
+                if (dangqian == page || k == "hidden") {
+                    alert("已经是最后一页");
+                }
+                else {
+                    getqixiang(parseInt(dangqian) + 1);
+                }
+            }
+            else {
+                if (dangqian == 1) {
+                    alert("已经是第一页");
+                }
+                else
+                    getqixiang(dangqian - 1);
+            }
+        }
+        //该函数一是用来初始时显示，二是用来在查找时候进行显示
+        function getqixiang(index) {
+
+            var waitim = document.getElementById("wait");
+
+
+            //这里是对图片进行加载，在后期测试时再打开
+             waitim.style.display = "block";
+             waitim.src = "images/wait.gif";
+
+            dangqian = index;
+            var xmlhttp;
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            //使用xmlhttprequest对象进行调用...threestate是一个状态，
+            if (threestate == 2) {//进行显示时调到这一步
+                xmlhttp.open("get", "qixiang/qixiang.aspx?time=" + Date.now.toString() + "&index=" + index, true);
+            }
+            else {//进行查找时会跳到这一步
+                xmlhttp.open("get", "qixiang/searchqixiang.aspx?time=" + Date.now.toString() + "&index=" + index + "&accord=" + accord + "&flag=" + threestate, true);
+            }
+            xmlhttp.send(null);
+            var pk = document.getElementById('mytab').getElementsByTagName('tr');
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    js = JSON.parse(xmlhttp.responseText);
+                    var body = js.body;
+
+                    var j = 0;
+                    page = js.code;
+                    for (var tt = 0; tt < 9; tt++) {
+                        pk[tt].style.visibility = "visible";
+                    }
+                    for (var col = 1; col <= body.length; col++) {
+                        var k = pk[col].getElementsByTagName("td");
+                        k[0].innerHTML = unescape(body[col - 1].NYQX_ID);
+                        k[1].innerHTML = unescape(body[col - 1].NYQX_BIAOTI);
+                        k[2].innerHTML = unescape(body[col - 1].NYQX_KAISHIRIQI);
+                        k[3].innerHTML = unescape(body[col - 1].NYQX_YOUXIAOQI_DAY);
+                        k[4].innerHTML = unescape(body[col - 1].NYQX_FABURIQI);
+
+                    }
+                    //权限管理
+                    if (power == "0") {
+                        xiugai1.style.visibility = "hidden";
+                        xiugai2.style.visibility = "hidden";
+                        xiugai3.style.visibility = "hidden";
+                        xiugai4.style.visibility = "hidden";
+                        xiugai5.style.visibility = "hidden";
+                        xiugai6.style.visibility = "hidden";
+                        xiugai7.style.visibility = "hidden";
+                        xiugai8.style.visibility = "hidden";
+                        shanchu1.style.visibility = "hidden";
+                        shanchu2.style.visibility = "hidden";
+                        shanchu3.style.visibility = "hidden";
+                        shanchu4.style.visibility = "hidden";
+                        shanchu5.style.visibility = "hidden";
+                        shanchu6.style.visibility = "hidden";
+                        shanchu7.style.visibility = "hidden";
+                        shanchu8.style.visibility = "hidden";
+                        addmessage.style.visibility = "hidden";
+                    }
+                    else if (power == "1") {
+                        xiugai1.style.visibility = "hidden";
+                        xiugai2.style.visibility = "hidden";
+                        xiugai3.style.visibility = "hidden";
+                        xiugai4.style.visibility = "hidden";
+                        xiugai5.style.visibility = "hidden";
+                        xiugai6.style.visibility = "hidden";
+                        xiugai7.style.visibility = "hidden";
+                        xiugai8.style.visibility = "hidden";
+                        shanchu1.style.visibility = "hidden";
+                        shanchu2.style.visibility = "hidden";
+                        shanchu3.style.visibility = "hidden";
+                        shanchu4.style.visibility = "hidden";
+                        shanchu5.style.visibility = "hidden";
+                        shanchu6.style.visibility = "hidden";
+                        shanchu7.style.visibility = "hidden";
+                        shanchu8.style.visibility = "hidden";
+                    }
+                    else if (power == "2") {
+                        shanchu1.style.visibility = "hidden";
+                        shanchu2.style.visibility = "hidden";
+                        shanchu3.style.visibility = "hidden";
+                        shanchu4.style.visibility = "hidden";
+                        shanchu5.style.visibility = "hidden";
+                        shanchu6.style.visibility = "hidden";
+                        shanchu7.style.visibility = "hidden";
+                        shanchu8.style.visibility = "hidden";
+                    }
+                    else {
+
+                    }
+
+                    for (var col = body.length + 1; col < 9; col++) {
+                        pk[col].style.visibility = "hidden";
+
+                    }
+
+                    var pageindex = document.getElementById("pageindex");
+                    waitim.style.display = "none";
+                    pageindex.innerHTML = "";
+                    for (var pagesize = 0; pagesize < page; pagesize++) {
+                        pageindex.innerHTML += "<option value=" + (pagesize) + "  onclick=getqixiang(this.innerHTML)>" + (pagesize + 1) + "</option>";
+                    }
+                    pageindex.selectedIndex = dangqian - 1;
+                }
+            }
+
+        }
+        //这个look函数是干嘛用的？？？查看具体内容
+        function look(obj) {
+
+            location.replace("qixiang/look.aspx?id=" + obj.parentNode.parentNode.getElementsByTagName('td')[0].innerHTML);
+
+        }
+        function deletedata(obj) {
+            if (confirm("你确定删除吗？"))
+            {
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                { // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                }
+                else// code for IE6, IE5
+                { 
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.open("get", "qixiang/deleteqixiang.aspx?id=" + obj.parentNode.parentNode.getElementsByTagName('td')[0].innerHTML, false);
+                xmlhttp.send(null);
+                alert("该条目已删除");
+                location.replace(location.href);
+            }
+            else
+            {
+            }
+
+        }
+        //dingwwi
+        function xianshi()
+        {
+            location.replace(location.href);
+        }
+       
+        function search(s)//用来检索的方法，s=0是检索题目
+        {
+            threestate = s;
+            if (s == 0) {
+                accord = document.getElementById("itype").value;
+            }
+            else {
+                accord = document.getElementById("ikeywork").value;
+            }
+            dangqian = 1;
+            getqixiang(1);
+        }
+
+    </script>
+</head>
+
+<body onload="getqixiang(1)" style=" margin: 0px; height: 100%;">
+    <img style="position :absolute; left:0px;top:-20px; width:100%;height:1000px; display:none;" id="wait" />
+    <div id="qixiangbody">
+        <div class="title">
+
+            <h2>农业气象信息专栏</h2>
+
+        </div>
+
+        <div style="position: absolute;right: 10%;">题目检索：<input type="text" id="itype" />&nbsp&nbsp<button onclick="search(0)">检索</button></div>
+
+        <!--<div style="position: absolute;right: 7%;">关键词检索：<input type="text" id="ikeywork" />&nbsp&nbsp<button onclick="search(1)">检索</button></div>-->
+        <br />
+        <br />
+        <button onclick="xianshi()" style="position: absolute; right: 7%; ">显示全部</button>
+        <br />
+        <br />
+        <table width="94%" style="height: 450px; text-align: center;   font-size: 14px;" id="mytab" border="1" class="t1">
+            <thead>
+            <th width="10%">编号</th>
+            <th width="20%">标题</th>
+            <th width="20%">开始时间</th>
+            <th width="10%">有效期</th>
+            <th width="20%">发布日期</th>
+            <th width="20%">修改/删除/查看</th>
+            </thead>
+            <tr class="a1">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a onclick="changediv(this)" href="javascript:; " id="xiugai1">修改</a>
+                    &nbsp;&nbsp;<a onclick="deletedata(this)" href="javascript:;" id="shanchu1">删除</a>
+                    &nbsp;&nbsp;<a onclick="look(this)" href="javascript:;" id="chakan1">查看</a>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a onclick="changediv(this)" href="javascript:; " id="xiugai2">修改</a>
+                    &nbsp;&nbsp;<a onclick="deletedata(this)" href="javascript:;" id="shanchu2">删除</a>
+                    &nbsp;&nbsp;<a onclick="look(this)" href="javascript:;" id="chakan2">查看</a>
+                </td>
+            </tr>
+            <tr class="a1">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a onclick="changediv(this)" href="javascript:; " id="xiugai3">修改</a>
+                    &nbsp;&nbsp;<a onclick="deletedata(this)" href="javascript:;" id="shanchu3">删除</a>
+                    &nbsp;&nbsp;<a onclick="look(this)" href="javascript:;" id="chakan3">查看</a>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a onclick="changediv(this)" href="javascript:; " id="xiugai4">修改</a>
+                    &nbsp;&nbsp;<a onclick="deletedata(this)" href="javascript:;" id="shanchu4">删除</a>
+                    &nbsp;&nbsp;<a onclick="look(this)" href="javascript:;" id="chakan4">查看</a>
+                </td>
+            </tr>
+            <tr class="a1">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a onclick="changediv(this)" href="javascript:; " id="xiugai5">修改</a>
+                    &nbsp;&nbsp;<a onclick="deletedata(this)" href="javascript:;" id="shanchu5">删除</a>
+                    &nbsp;&nbsp;<a onclick="look(this)" href="javascript:;" id="chakan5">查看</a>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a onclick="changediv(this)" href="javascript:; " id="xiugai6">修改</a>
+                    &nbsp;&nbsp;<a onclick="deletedata(this)" href="javascript:;" id="shanchu6">删除</a>
+                    &nbsp;&nbsp;<a onclick="look(this)" href="javascript:;" id="chakan6">查看</a>
+                </td>
+            </tr>
+            <tr class="a1">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a onclick="changediv(this)" href="javascript:; " id="xiugai7">修改</a>
+                    &nbsp;&nbsp;<a onclick="deletedata(this)" href="javascript:;" id="shanchu7">删除</a>
+                    &nbsp;&nbsp;<a onclick="look(this)" href="javascript:;" id="chakan7">查看</a>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a onclick="changediv(this)" href="javascript:; " id="xiugai8">修改</a>
+                    &nbsp;&nbsp;<a onclick="deletedata(this)" href="javascript:;" id="shanchu8">删除</a>
+                    &nbsp;&nbsp;<a onclick="look(this)" href="javascript:;" id="chakan8">查看</a>
+                    </td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <button onclick="updatediv()" style="float:right;position:relative;right:7%;width:80px;">添加</button>
+    <br />
+    <br />
+    <table>
+
+        <tr>
+            <td>
+                <button onclick="changepage(this.innerHTML)">上一页</button>
+            </td>
+            <td>
+                &nbsp;
+                <select id="pageindex">
+
+                    <option>1</option>
+
+                </select>
+                &nabla;
+
+            </td>
+            <td>
+                <button onclick="changepage(this.innerHTML)">下一页</button>
+            </td>
+        </tr>
+    </table>
+
+    <div class="templatemo-content-container" id="update" style="display: none; height: 100%; position: absolute; top: 0px; left: 0px">
+        <div class="templatemo-content-widget no-padding">
+            <div class="panel panel-default table-responsive">
+
+
+                <table class='tableBorder table table-striped table-bordered templatemo-user-table' align=center>
+                    <img src="./images/close.png" onclick="c()" style="float:right;height:40px;width:40px" />
+
+
+                    <tr>
+                        <th class='tableHeaderText green-bg white-text' colspan=2 height=25>农业气象信息专栏</th>
+                    <tr>
+                        <td height=23 colspan="2" class='forumRow'>
+                            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                    </tr>
+                    <tr>
+                        <td height="10">&nbsp;</td>
+                    </tr>
+                </table>
+                </td>
+                </tr>
+                <tr>
+                    <td>农业气象信息标题 (必填) </td>
+                    <td class='forumRow'>
+                        <div class="form-group">
+                            <input name='a_title' type='text' id='a_title' class="form-control">
+                        </div>
+                    </td>
+                </tr>
+                <!----<tr>
+                        <td class='forumRowHighLight' height=23>新闻分类<span class="forumRow"> (必选) </span></td>
+                        <td>
+                            <div class="form-group">
+                                <select name="cid" id="cid" onchange="changeselect1(this.value)" class="form-control">
+                                    <option value="0">选择一级分类</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                                &nbsp;&nbsp;
+                        </td>
+                </div>
+                </tr>-
+                <tr>
+                    <td class='forumRowHighLight'>新闻图片</td>
+                    <td width="85%" class='forumRowHighLight'>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td>
+                                    <div class="form-group" style="margin-right:20px">
+                                        <input name="web_image" type="file" id="file">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>-->
+                <!--<tr>
+                    <td class='forumRow' height=23>农业气象信息发布日期</td>
+                    <td class='forumRow'>
+                        <div class="form-group">
+                            <input type='text' name='a_key' class="form-control" id="a_keywords">
+                        </div>
+                    </td>
+                </tr>-->
+               
+                <tr>
+                    <td class='forumRow' height=23>农业气象信息开始时间</td>
+                    <td class='forumRow'>
+                        <div class="form-group">
+                           
+                            <input type='text' name='a_kaishiriqi' onclick="WdatePicker()" readonly="true" class=" form-control" id="a_kaishiriqi">
+                           
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class='forumRow' height=23>农业气象信息有效期(天数)</td>
+                    <td class='forumRow'>
+                        <div class="form-group">
+                            <input type='text' name='a_youxiaoqi' class="form-control" id="a_youxiaoqi">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class='forumRow' height=23>农业气象信息内容 (必填) </td>
+                    <td class='forumRow'>
+                        <div class="form-group">
+                            <textarea name="a_content" id="a_content" style=" width:100%; height:100px; " class="ckeditor"></textarea>
+                        </div>
+                    </td>
+                </tr>
+                <!--<tr>
+                    <td class='forumRowHighLight' height=23>农业气象信息管理员</td>
+                    <td class='forumRowHighLight'>
+                        <span class="forumRow">
+                            <div class="form-group">
+                                <input name='a_author' type='text' id='a_author' value="" size='40' class="form-control" readonly="true">
+                            </div>
+                    </td>
+                </tr>-->
+                <tr>
+                    <td height="50" colspan=2 class='forumRow'>
+                        <div align="center">
+                            <div class="form-group">
+                                <button class="templatemo-blue-button" onclick="tijiao()">提交</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+            </div>
+        </div>
+</body>
+</html>

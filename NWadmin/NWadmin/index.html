@@ -1,0 +1,181 @@
+﻿
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="css/mode2.css" rel="stylesheet" />
+    <title>
+        农委管理后台
+    </title>
+    <script src="Scripts/jquery-1.7.1.min.js">
+    </script>
+    <script>
+        function tuichu()
+        {
+            alert("退出");
+            window.location = "Login.aspx";
+        }
+        function changeframe(value)
+        {
+            document.getElementById("ifrm").src = value;
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("button").mouseover(function () {
+                $(this).css("background-color", "#dbefee");
+            });
+            $("button").click(function () {
+                switch ($(this).attr("id")) {
+                    case "shiwu":
+                        $("#div_shiwu").slideToggle("slow");
+                        break;
+                    case "ncp":
+                        $("#div_ncp").slideToggle("slow");
+                        break;
+                    case "nyxx":
+                        $("#div_nyxx").slideToggle("slow");
+                        break;
+                    case "gg":
+                        $("#div_gg").slideToggle("slow");
+                        break;
+                    case "yhgl":
+                        $("#div_yhgl").slideToggle("slow");
+                        break;
+                    case "app":
+                        $("#div_app").slideToggle("slow");
+                        break;
+
+
+
+                }
+            });
+            $("button").mouseout(function () {
+                $(this).css("background-color", "#5c90bb");
+            })
+        });
+        function getCookie(name) {
+            document.cookie = "";
+            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+            if (arr = document.cookie.match(reg))
+                return unescape(arr[2]);
+            else
+                return null;
+        }
+        function gettip()
+        {
+            var zh = getCookie("zh");
+            var tip = document.getElementById("tip");
+            tip.innerHTML = "欢迎您，" + zh;
+            var power = getCookie("type");
+            if (power == "3") {
+
+            }
+            else {
+                yhgl.style.visibility = "hidden";
+            }
+        }
+
+    </script>
+    <style type="text/css">
+    </style>
+
+
+
+</head>
+<body style="width: 100%;height:800px;" onload="gettip()">
+
+
+    <table style="width: 100%;height:800px;">
+        <tr>
+            <td style="width:15%; vertical-align: text-top;">
+                <!--
+                    作者：2370205507@qq.com
+                    时间：2015-10-03
+                    描述：模块名
+                -->
+                <div style="width: 100%;height: auto;">
+
+                    <b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
+                    <div class="b d1 k">
+                        <table>
+                            <tr>
+                                <th>
+                                    <img style="width: 40px; height: 50px;margin-right: 5px;" src="images/txx.png" align="right" />
+                                </th>
+                                <th id="tip" style="font-size: 12px;color: #c3c3c3;text-align: center; "></th>
+                            </tr>
+
+                        </table>
+                        <div style="font-size: 14px;color: #7ec0d5; margin-top: 5px;margin-left: 18px;font-style: 微软雅黑;"><a onclick="tuichu()">超级管理员-退出</a></div>
+                    </div>
+                    <b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>
+                </div>
+                <br />
+                <button id="app" class="biaoti">
+                    首页图片
+                </button>
+                <div id="div_app" class="biaoti">
+                    <br />
+                    <p style="font-size: 14px;font-family: 微软雅黑">
+                        <a onclick="changeframe('topimg.html')">首页图片</a>
+                    </p>
+                </div>
+                    <button id="shiwu" class="biaoti">
+                        综合资讯
+                    </button>
+                    <div id="div_shiwu" class="biaoti">
+                        <br />
+
+                        <p style="font-size: 14px;font-family: 微软雅黑" ;><a onclick="changeframe('zonghezixun.html')">综合资讯</a></p>
+                        <p style="font-size: 14px;font-family: 微软雅黑" ;><a onclick="changeframe('liangshi.html')">粮食专栏</a></pstyle>
+                        <p style="font-size: 14px;font-family: 微软雅黑" ;><a onclick="changeframe('shucaizhuanlan.html')">蔬菜专栏</a></p>
+                        <p style="font-size: 14px;font-family: 微软雅黑" ;><a onclick="changeframe('nongzizhuanlan.html')">农资专栏</a></p>
+                        <p style="font-size: 14px;font-family: 微软雅黑" ;><a onclick="changeframe('gongqiuzhuanqu.html')">供求专区</a></p>
+                    </div>
+
+
+                    <button id="nyxx" class="biaoti">
+                        农业信息
+                    </button>
+                    <div id="div_nyxx">
+                        <br />
+                        <!--<p style="font-size: 14px;font-family: 微软雅黑" ;><a onclick=" changeframe('nongyeqixiang.html')">农业气象信息</a></p>-->
+                        <p style="font-size: 14px;font-family: 微软雅黑" ;><a onclick="changeframe('fenxiyujingxinxi.html')">分析预警信息</a></p>
+                        <p style="font-size: 14px;font-family: 微软雅黑" ;><a onclick="changeframe('jiagezhishu.html')">价格指数信息</a></p>
+                        <p style="font-size: 14px;font-family: 微软雅黑" ;><a onclick="changeframe('nongchanpin.html')">农产品价格</a></p>
+                    </div>
+
+                    <button id="gg" class="biaoti">
+                        调查及分析
+                    </button>
+                    <div id="div_gg" class="biaoti">
+                        <br />
+                        <p style="font-size: 14px;font-family: 微软雅黑" ;><a onclick=" changeframe('diaochawenjuan.html')">调查问卷</a></p>
+                        <p style="font-size: 14px;font-family: 微软雅黑" ;><a onclick="changeframe('jiance.html')">监测报告</a></p>
+                        <p style="font-size: 14px;font-family: 微软雅黑" ;><a onclick="changeframe('shichang.html')">市场分析</a></p>
+                        <p style="font-size: 14px;font-family: 微软雅黑" ;><a onclick="changeframe('zhuanjia.html')">专家观点</a></p>
+                    </div>
+
+
+                    <button id="yhgl" class="biaoti">
+                        用户管理
+                    </button>
+                    <div id="div_yhgl" class="biaoti">
+                        <br />
+                        <p style="font-size: 14px;font-family: 微软雅黑"><a onclick=" changeframe('user.html')">用户信息</a></p>
+                        <!--<p style="font-size: 14px;font-family: 微软雅黑"><a onclick="changeframe('usershouquan.html')">授权管理</a></p>-->
+                    </div>
+
+</td>
+
+            <td style="width: 85%; height: auto; vertical-align: top">
+               
+                <iframe name="ifrm" frameborder="no" style="border:0;width:100%;height:1000px; border:0" id="ifrm" frameboder="0" scrolling="no" src="zonghezixun.html"></iframe>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
